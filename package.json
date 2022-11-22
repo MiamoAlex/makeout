@@ -1,0 +1,16 @@
+{
+  "name": "makeout.dev",
+  "version": "1.0.0",
+  "description": "Makeout.dev is a fictionnal dating app for developpers",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Dating",
+    "REST",
+    "SPA"
+  ],
+  "author": "SOUNALET Alexandre, BAURI Antoine",
+  "license": "ISC"
+}
