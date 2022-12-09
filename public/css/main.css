@@ -97,4 +97,37 @@ select {
 }
 .theme__main {
   --clr-name-main: ;
+  --clr-main-text: #EBE0CC;
+  --clr-main-primary: #21222C;
+  --clr-main-secondary: #282A36;
+  --clr-main-green: #78F86D;
+  --clr-main-purple: #F455E4;
+}
+
+.main {
+  margin: auto;
+  max-width: 30rem;
+  outline: solid;
+  height: 100vh;
+  background-color: var(--clr-main-primary);
+  color: var(--clr-main-text);
+  overflow: hidden;
+}
+.main__core {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+  height: 100%;
+}
+.main__section {
+  height: 100%;
+  flex-basis: 100%;
+  flex-grow: 1;
+  flex-shrink: 0;
+  overflow: auto;
+}
+
+body {
+  background-color: var(--clr-main-primary);
 }/*# sourceMappingURL=main.css.map */

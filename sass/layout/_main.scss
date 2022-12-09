@@ -1,0 +1,24 @@
+@use '../abstracts/' as *;
+
+.main {
+    margin: auto;
+    max-width: 30rem;
+    outline: solid;
+    height: 100vh;
+    background-color: var(--clr-main-primary);
+    color: var(--clr-main-text);
+    overflow: hidden;
+
+    &__core {
+        @include flex(flex-start, flex-start, row);
+        height: 100%;
+    }
+
+    &__section {
+        height: 100%;
+        flex-basis: 100%;
+        flex-grow: 1;
+        flex-shrink: 0;
+        overflow: auto;
+    }
+}
