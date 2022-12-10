@@ -77,3 +77,27 @@ select {
     scroll-behavior: auto !important;
   }
 }
+
+// Material Design pour Makeout
+body {
+  display: grid;
+  place-content: center;
+}
+
+ul {
+  list-style: none;
+  padding-inline-start: 0;
+  margin-block-end: 0;
+  margin-block-start: 0;
+}
+
+input[type="button"] {
+  padding: .5rem 1.5rem .5rem 1.5rem;
+  background-color: var(--clr-main-primary);
+  color: var(--clr-main-text);
+  border-radius: .5rem;
+  border: none;
+  font-size: 1.25rem;
+  min-width: 10rem;
+  cursor: pointer;
+}

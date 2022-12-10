@@ -11,3 +11,13 @@
         }
     }
 }
+
+.color {
+    &__green {
+        color: var(--clr-main-green);
+    }
+
+    &__purple {
+        color: var(--clr-main-purple);
+    }
+}

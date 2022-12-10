@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="fr" class="theme__main">
+<html lang="en" class="theme__main">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,11 +8,19 @@
     <title>makeout.dev</title>
     <link rel="stylesheet" href="./css/main.css">
 </head>
+
 <body>
 
-    <!-- Coeur de la page -->
     <main class="main">
+        <!-- En tête de l'application -->
+        <section class="main__head">
+            <h2 class="main__head-title" hidden>Header</h2>
+            <ul class="main__head-actions"></ul>
+        </section>
+        <!-- Coeur de l'application -->
         <div class="main__core">
+            <!-- Accueil de l'application -->
+            <section class="main__section"></section>
             <section class="main__section"></section>
             <section class="main__section"></section>
             <section class="main__section"></section>
@@ -20,9 +29,27 @@
 
     <!-- Templates de l'application -->
     <div class="templates">
-        
+
     </div>
+
+    <!-- Spritesheet d'icones -->
+    <svg id="iconSheet" hidden>
+        <!-- Icone présentation 1-->
+        <symbol id="iconPresentation1" width="272" height="178" viewBox="0 0 272 178" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <mask id="mask0_67_366" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="272"
+                height="178">
+                <rect width="272" height="178" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_67_366)">
+                <path
+                    d="M45.3333 109.283L73.95 80.6667L45.3333 52.05L16.7167 80.6667L45.3333 109.283ZM198.333 103.333L226.667 58L255 103.333H198.333ZM136 92C126.556 92 118.528 88.6944 111.917 82.0833C105.306 75.4722 102 67.4444 102 58C102 48.3667 105.306 40.2898 111.917 33.7693C118.528 27.2564 126.556 24 136 24C145.633 24 153.706 27.2564 160.219 33.7693C166.74 40.2898 170 48.3667 170 58C170 67.4444 166.74 75.4722 160.219 82.0833C153.706 88.6944 145.633 92 136 92ZM0 160V142.15C0 133.839 4.20467 127.179 12.614 122.169C21.0158 117.168 31.9222 114.667 45.3333 114.667C47.7889 114.667 50.15 114.712 52.4167 114.803C54.6833 114.901 56.8556 115.139 58.9333 115.517C56.2889 119.294 54.3056 123.356 52.9833 127.7C51.6611 132.044 51 136.672 51 141.583V160H0ZM68 160V141.583C68 129.306 74.2824 119.389 86.8473 111.833C99.4047 104.278 115.789 100.5 136 100.5C156.4 100.5 172.833 104.278 185.3 111.833C197.767 119.389 204 129.306 204 141.583V160H68ZM226.667 114.667C240.267 114.667 251.222 117.168 259.533 122.169C267.844 127.179 272 133.839 272 142.15V160H221V141.583C221 136.672 220.384 132.044 219.153 127.7C217.929 123.356 216.089 119.294 213.633 115.517C215.711 115.139 217.838 114.901 220.014 114.803C222.182 114.712 224.4 114.667 226.667 114.667Z"
+                    fill="#282A36" />
+            </g>
+        </symbol>
+    </svg>
 
     <script type="module" src="main.js"></script>
 </body>
+
 </html>

@@ -1,5 +1,38 @@
 @use "../abstracts/" as *;
 
 body {
-    background-color: var(--clr-main-primary);
+    background-color: var(--clr-main-secondary);
+}
+
+.home {
+    @include flex(space-between, center, column);
+
+    &__title {
+        font-weight: var(--font-w-regular);
+        color: var(--clr-main-text);
+        font-size: 2.75rem;
+    }
+
+    &__subtitle {
+        display: block;
+        font-size: 1.75rem;
+        width: 100%;
+        margin-top: -.75rem;
+        text-align: center;
+    }
+
+    &__presentation {
+        height: 60%;
+        display: grid;
+        place-content: center;
+    }
+
+    &__login {
+        padding-top: 1rem;
+        @include flex(flex-start, center, column);
+        gap: 1.25rem;
+        background-color: var(--clr-main-secondary);
+        width: 100%;
+        height: 40%;
+    }
 }

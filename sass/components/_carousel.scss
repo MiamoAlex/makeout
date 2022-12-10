@@ -1,0 +1,16 @@
+@use '../abstracts/' as *;
+
+.carousel {
+    @include flex(center,center,column);
+    height: 100%;
+    
+    &__item {
+        @include flex(center,center,column);
+        gap: .5rem;
+    }
+
+    &__text {
+        width: 80%;
+        text-align: center;
+    }
+}

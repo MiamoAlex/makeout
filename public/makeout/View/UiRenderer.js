@@ -17,7 +17,6 @@ export class UiRenderer {
         for (const key in domElements) {
             this.domElements[key] = document.querySelector(domElements[key].element);
         }
-
         console.log(this.domElements);
     }
 
@@ -28,5 +27,18 @@ export class UiRenderer {
      */
     getElement(id) {
         return this.domElements[id];
+    }
+
+    /**
+     * renderPartial() déplace la vue sur un nouvel écran formatté
+     * @param {Number} layoutId Id de l'écran à remplir
+     * @param {String} partialContent Contenu du partial selectionné
+     * @param {String} partialName Nom du partial sélectionné
+     */
+    renderPartial(layoutId, partialContent, partialName) {
+        this.getElement('mainCore').style.transform = `translateX(${-layoutId * 100}%)`;
+        const section = this.getElement('mainCore').children[layoutId];
+        section.className = `main__section ${partialName}`;
+        section.innerHTML = partialContent;
     }
 }

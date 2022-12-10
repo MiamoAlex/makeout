@@ -2,8 +2,11 @@
 
 
 body {
+    font-family: var(--font-ff-ubuntu);
 }
 
 h1,
 h2 {
+    font-weight: var(--font-w-bold);
+    color: var(--clr-main-purple);
 }

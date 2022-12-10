@@ -1,12 +1,11 @@
 @use "functions" as *;
 $fonts: (
   ff: (
-    lato: "'Lato', sans-serif",
+    ubuntu: "'Ubuntu', sans-serif",
   ),
   w: (
-    light: 200,
+    light: 300,
     regular: 400,
-    semibold: 600,
     bold: 700,
   ),
 );

@@ -3,7 +3,13 @@
  * retourner les données importantes
  */
 export class RequestManager {
-    constructor() {
-        
+
+    /**
+     * getPartial() récupere un partial html et le retourne
+     * @param {String} partialName Nom du partial à récuperer
+     */
+    async getPartial(partialName) {
+        const req = await fetch(`./views/${partialName}.html`);
+        return await req.text();
     }
 }
