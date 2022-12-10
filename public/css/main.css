@@ -101,6 +101,10 @@ html, body {
   place-content: center;
 }
 
+strong {
+  font-weight: var(--font-weight-regular);
+}
+
 use {
   pointer-events: none;
 }
@@ -114,7 +118,8 @@ ul {
 
 input[type=text],
 input[type=password],
-input[type=number] {
+input[type=number],
+input[type=date] {
   background-color: var(--clr-main-secondary);
   border: 0;
   font-size: 1.5rem;
@@ -125,7 +130,8 @@ input[type=number] {
 }
 input[type=text]:focus,
 input[type=password]:focus,
-input[type=number]:focus {
+input[type=number]:focus,
+input[type=date]:focus {
   border-bottom: solid 3px var(--clr-main-text);
   margin-bottom: -2px;
   outline: 0;
@@ -161,6 +167,7 @@ body {
 h1,
 h2 {
   color: var(--clr-main-purple);
+  font-weight: var(--font-weight-regular);
 }
 
 .theme__main {
@@ -302,10 +309,6 @@ body {
   height: 40%;
 }
 
-.profile {
-  height: 300vh;
-}
-
 .login {
   display: grid;
   place-content: center;
@@ -318,5 +321,63 @@ body {
   gap: 1rem;
 }
 .login__form input[type=button] {
+  background-color: var(--clr-main-secondary);
+}
+
+.match {
+  padding-top: 0;
+}
+.match__lover {
+  width: 100%;
+  height: 80%;
+  isolation: isolate;
+}
+.match__lover-img {
+  border: solid var(--clr-main-secondary) 10px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 0 0 8rem 8rem;
+}
+.match__actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 0.5rem;
+  height: 20%;
+  width: 100%;
+}
+.match__action {
+  width: 5rem;
+  height: 5rem;
+  background-color: var(--clr-main-secondary);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.match__action-icon {
+  pointer-events: none;
+  width: 5rem;
+  height: 5rem;
+}
+
+.sign, .profile {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 2rem;
+  gap: 4rem;
+}
+.sign__section, .profile__section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+.sign input[type=button], .profile input[type=button] {
   background-color: var(--clr-main-secondary);
 }/*# sourceMappingURL=main.css.map */

@@ -86,6 +86,10 @@ html, body {
   place-content: center;
 }
 
+strong {
+  font-weight: var(--font-weight-regular);
+}
+
 use {
   pointer-events: none;
 }
@@ -99,7 +103,8 @@ ul {
 
 input[type="text"],
 input[type="password"],
-input[type="number"] {
+input[type="number"],
+input[type="date"] {
   background-color: var(--clr-main-secondary);
   border: 0;
   font-size: 1.5rem;
