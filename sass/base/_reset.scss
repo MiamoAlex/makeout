@@ -79,9 +79,15 @@ select {
 }
 
 // Material Design pour Makeout
-body {
+html, body {
+  position: relative;
   display: grid;
+  overflow: none;
   place-content: center;
+}
+
+use {
+  pointer-events: none;
 }
 
 ul {
@@ -91,13 +97,43 @@ ul {
   margin-block-start: 0;
 }
 
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+  background-color: var(--clr-main-secondary);
+  border: 0;
+  font-size: 1.5rem;
+  height: 2.5rem;
+  border-bottom: solid 1px var(--clr-main-text);
+  transition: border-bottom 300ms, margin-bottom 300ms;
+  color: var(--clr-main-text);
+
+  &:focus {
+    border-bottom: solid 3px var(--clr-main-text);
+    margin-bottom: -2px;
+    outline: 0;
+  }
+}
+
 input[type="button"] {
-  padding: .5rem 1.5rem .5rem 1.5rem;
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
   background-color: var(--clr-main-primary);
   color: var(--clr-main-text);
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   border: none;
   font-size: 1.25rem;
   min-width: 10rem;
   cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--clr-main-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--clr-main-secondary);
 }

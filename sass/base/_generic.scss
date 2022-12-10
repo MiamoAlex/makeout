@@ -12,6 +12,15 @@
     }
 }
 
+.title {
+    text-align: center;
+}
+
+.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
 .color {
     &__green {
         color: var(--clr-main-green);

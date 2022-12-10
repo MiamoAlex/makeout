@@ -2,26 +2,48 @@
 
 .main {
     position: relative;
-    max-width: 30rem;
+    max-width: 28rem;
+    width: 100vw;
     height: 100vh;
-    max-height: 55rem;
-    outline: solid grey 1px;
+    max-height: 60rem;
     background-color: var(--clr-main-primary);
     color: var(--clr-main-text);
     overflow: hidden;
 
     &__head {
-        position: absolute;
-        top: 0;
+        position: relative;
         height: 3rem;
         width: 100%;
         background-color: var(--clr-main-secondary);
-        z-index: 1;
+        z-index: 10;
+        
+        &-icon {
+            height: 2rem;
+            width: 2rem;
+            cursor: pointer
+        }
+
+        &-title {
+            line-height: 2rem
+        }
+
+
+        &-actions {
+            @include flex(space-between, center, row);
+            height: 3rem;
+            padding: 0 1rem 0 1rem;
+        }
+
+        &-action {
+            height: 2rem;
+            min-width: 2rem;
+            color: var(--clr-main-text)
+        }
     }
 
     &__core {
         @include flex(flex-start, flex-start, row);
-        height: 100%;
+        height: calc(100% - 3rem);
         transition: transform 400ms ease;
     }
 

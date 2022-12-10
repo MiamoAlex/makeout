@@ -45,8 +45,10 @@ export class UiController {
      * @param {String} partialName nom du partial à récuperer pour formattage
      */
     async changeLayout(newLayout, partialName) {
-        const partial = await this.requestManager.getPartial(partialName);
-        this.uiRenderer.renderPartial(newLayout, partial, partialName);
+        const corePartial = await this.requestManager.getPartial(partialName);
+        const headerPartial = await this.requestManager.getPartial(`headers/header${partialName}`);
+        this.uiRenderer.renderPartial(newLayout, corePartial, partialName);
+        this.uiRenderer.getElement('header').children[1].innerHTML = headerPartial;
     }
 
     /**
@@ -54,7 +56,10 @@ export class UiController {
      * @param {Event} ev Evenement au clic sur l'en tête de l'application
      */
     headerHandler(ev) {
-        console.log(ev)
+        const dataset = ev.target.dataset;
+        if (dataset.layout) {
+            this.changeLayout(dataset.layout, dataset.partial);
+        }
     }
 
     /**
