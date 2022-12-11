@@ -28,8 +28,13 @@
     </main>
 
     <!-- Templates de l'application -->
-    <div class="templates">
-
+    <div class="templates" hidden>
+        <template class="template__message">
+            <li class="message">
+                <span class="message__author">{{author}}</span>
+                <span class="message__content">{{content}}</span>
+            </li>
+        </template>
     </div>
 
     <!-- Spritesheet d'icones -->

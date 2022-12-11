@@ -133,6 +133,7 @@ input[type=date] {
   border-bottom: solid 1px var(--clr-main-text);
   transition: border-bottom 300ms, margin-bottom 300ms;
   color: var(--clr-main-text);
+  color-scheme: dark;
 }
 input[type=text]:focus,
 input[type=password]:focus,
