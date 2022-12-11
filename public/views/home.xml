@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <h2 class="home__title" hidden>Home</h2>
 <div class="home__presentation">
     <ul class="home__carousel carousel">

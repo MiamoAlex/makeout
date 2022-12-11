@@ -1,0 +1,8 @@
+<section class="sign__section">
+    <h2 class="profile__title title"> { Create your account } </h2>
+    <input type="text" name="username" placeholder="Username" autocomplete="off">
+    <input type="password" name="password" placeholder="Password" autocomplete="off">
+    <input type="password" name="confirmpassword" placeholder="Confirm password" autocomplete="off">
+    <input type="date" name="data" placeholder="Birthdate" autocomplete="off">
+</section>
+<input type="button" value="Sign in" data-i18n="signIn" data-layout="1" data-partial="profile">

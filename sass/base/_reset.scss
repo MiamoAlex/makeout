@@ -79,11 +79,16 @@ select {
 }
 
 // Material Design pour Makeout
-html, body {
+html,
+body {
   position: relative;
   display: grid;
   overflow: none;
   place-content: center;
+}
+
+img {
+  user-select: none;
 }
 
 strong {
@@ -128,6 +133,19 @@ input[type="button"] {
   border: none;
   font-size: 1.25rem;
   min-width: 10rem;
+  cursor: pointer;
+  transition: transform 300ms;
+  &:hover {
+    transform: scale(0.95);
+  }
+}
+
+input[type="file"] {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  z-index: 10;
+  position: relative;
   cursor: pointer;
 }
 

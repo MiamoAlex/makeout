@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <form class="login__form">
     <h2 class="profile__title title"> { Enter your creditentials } </h2>
     <input type="text" name="username" placeholder="Username" autocomplete="off">

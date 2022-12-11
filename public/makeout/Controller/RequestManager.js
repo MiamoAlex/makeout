@@ -9,7 +9,7 @@ export class RequestManager {
      * @param {String} partialName Nom du partial à récuperer
      */
     async getPartial(partialName) {
-        const req = await fetch(`./views/${partialName}.html`);
+        const req = await fetch(`./views/${partialName}.xml`);
         return await req.text();
     }
 }

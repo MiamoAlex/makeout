@@ -1,15 +1,25 @@
 @use '../abstracts/' as *;
 
 
-.login{
+.login, .sign{
     display: grid;
     place-content: center;
     &__form {
         @include flex(center,center,column);
         gap: 1rem;
 
-        & input[type="button"] {
-            background-color: var(--clr-main-secondary);
-        }
+    }
+    & input[type="button"] {
+        background-color: var(--clr-main-secondary);
+    }
+    
+    &__section {
+        @include flex(center,center,column);
+        gap: 1rem;
+        margin-bottom: 2rem;
+        
+    & input {
+        width: 100%
+    }
     }
 }

@@ -1,0 +1,47 @@
+<section class="sign__section">
+    <h2 class="profile__title title"> { Selfies } </h2>
+    <div class="profile__selfies">
+        <div class="profile__selfie">
+            <input type="file" name="selfie1">
+            <svg class="profile__selfie-icon">
+                <use width="144" height="144" xlink:href="#iconUpload"></use>
+            </svg>
+        </div>
+        <div class="profile__selfie">
+            <input type="file" name="selfie2">
+            <svg class="profile__selfie-icon">
+                <use width="144" height="144" xlink:href="#iconUpload"></use>
+            </svg>
+        </div>
+        <div class="profile__selfie">
+            <input type="file" name="selfie3">
+            <svg class="profile__selfie-icon">
+                <use width="144" height="144" xlink:href="#iconUpload"></use>
+            </svg>
+        </div>
+        <div class="profile__selfie">
+            <input type="file" name="selfie4">
+            <svg class="profile__selfie-icon">
+                <use width="144" height="144" xlink:href="#iconUpload"></use>
+            </svg>
+        </div>
+    </div>
+</section>
+
+<section class="sign__section">
+    <h2 class="profile__title title"> { Preferences } </h2>
+</section>
+
+<section class="sign__section">
+    <h2 class="profile__title title"> { Favorite Language } </h2>
+</section>
+
+<section class="sign__section">
+    <h2 class="profile__title title"> { Information } </h2>
+    <input type="text" name="username" placeholder="Username" autocomplete="off">
+    <input type="password" name="password" placeholder="Password" autocomplete="off">
+    <input type="password" name="confirmpassword" placeholder="Confirm password" autocomplete="off">
+    <input type="date" name="data" placeholder="Birthdate" autocomplete="off">
+</section>
+
+<input type="button" value="Save changes" data-i18n="saveChanges" data-layout="2" data-partial="match">

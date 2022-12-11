@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-    
 <div class="match__lover">
+    <span class="match__lover-name">Alexandre</span>
+    <span class="match__lover-age">20</span>
     <img class="match__lover-img" src="./assets/alex.png" alt="Picture of an awesome person">
 </div>
 
@@ -35,6 +29,3 @@
         </svg>
     </li>
 </ul>
-
-</body>
-</html>

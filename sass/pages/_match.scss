@@ -5,21 +5,41 @@
     &__lover {
         width: 100%;
         height: 80%;
+        position: relative;
         isolation: isolate;
+        padding: 0 1.5rem 1rem 1.5rem;
+        @include flex(flex-end, flex-start, column);
+
+        &-name {
+            font-size: 2.5rem;
+            font-weight: var(--font-w-bold);
+            &::before {
+                content: '>';
+            }
+        }
+
+        &-age {
+            font-size: 4.5rem;
+            font-weight: var(--font-w-bold);
+            margin-top: -1.5rem;
+        }
 
         &-img {
+            position: absolute;
+            inset: 0;
             border: solid var(--clr-main-secondary) 10px;
+            border-top: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
             object-fit: cover;
             object-position: top;
-            border-radius: 0 0 8rem 8rem;
+            border-radius: 0 0 4rem 4rem;
         }
     }
 
     &__actions {
-        @include flex(center, center, row);
+        @include flex(space-around, center, row);
         gap: 0.5rem;
         height: 20%;
         width: 100%;
@@ -31,6 +51,11 @@
         background-color: var(--clr-main-secondary);
         border-radius: 0.5rem;
         cursor: pointer;
+        transition: transform 300ms;
+
+        &:hover {
+            transform: scale(.95);
+        }
         &-icon {
             pointer-events: none;
             width: 5rem;
