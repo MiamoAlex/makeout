@@ -1,0 +1,24 @@
+{
+    "messages": [
+        {
+            "content": "hello !",
+            "date": "2022-04-22T01:00:00-05:00",
+            "sender": false
+        },
+        {
+            "content": "hi, how are you?",
+            "date": "2022-04-22T01:00:00-05:00",
+            "sender": true
+        },
+        {
+            "content": "csgo source 2 announced!!",
+            "date": "2022-04-22T01:00:00-05:00",
+            "sender": true
+        },
+        {
+            "content": "no it's not :(",
+            "date": "2022-04-22T01:00:00-05:00",
+            "sender": true
+        }
+    ]
+}

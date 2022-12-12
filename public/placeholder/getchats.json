@@ -1,0 +1,16 @@
+{
+    "lovers": [
+        {
+            "name": "Alexandre",
+            "selfie": "https://picsum.photos/200/300&1",
+            "date": "2022-04-22T01:00:00-05:00",
+            "lastMessage": "miamo miamo"
+        },
+        {
+            "name": "Antoine",
+            "selfie": "https://picsum.photos/200/300&2",
+            "date": "2022-04-22T01:00:00-05:00",
+            "lastMessage": "j'adore hades"
+        }
+    ]
+}
