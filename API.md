@@ -58,17 +58,23 @@ lover entier en base{}
 
 - Ce que tu me retourne : un potentiel match avec une personne précedemment acceptée
 
-## Route : api/getchats - GET
+## Route : api/getchats - GET ✅
 
 - Ce que tu me retourne :
 [lover{
     ...lastMessage: ""
 }]
 
-## Route : api/getusermessages/:id - GET
+## Route : api/getusermessages/:id - GET ✅
 
 - Ce que tu me retourne
 [message{
     date, text, sender: TRUE c'est lui, FALSE c'est moi
 }]
-/
+
+## Route : api/sendmessage/:id - PUT ✅
+
+- Ce que je t'envoie
+message{
+    content
+}

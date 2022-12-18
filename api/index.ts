@@ -2,6 +2,8 @@ import express, { Express } from "express";
 import morgan from "morgan";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import http from 'http';
+import { Server } from "socket.io";
 
 import router from "./routes/";
 
@@ -20,17 +22,29 @@ console.groupEnd()
 
 // instanciate an express server
 const app: Express = express();
+const server = http.createServer(app);
+const io = new Server(server);
+
+// express middlewares
 app.use(cors());
 app.use(morgan("tiny"));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
-// routes
+// express routes
 app.use("/api", router.apiRouter);
 app.use("/", router.webRouter);
 
+// socket.io
+io.on('connection', (socket) => {
+  console.log('a user connected');
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+});
+
 // define the port
-app.listen(appConfig.PORT, () => {
+server.listen(appConfig.PORT, () => {
   console.log(`\n Server is running on port ${appConfig.PORT}`);
 });

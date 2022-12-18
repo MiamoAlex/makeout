@@ -41,4 +41,26 @@ CREATE TABLE `r_user` (
     
 ALTER TABLE `makeout`.`r_user` 
 CHANGE COLUMN `id` `id` INT NOT NULL AUTO_INCREMENT ;
+
+
+
+CREATE TABLE `makeout`.`message` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `date` DATETIME NULL,
+  `content` LONGTEXT NULL,
+  `id_user_1` INT NULL,
+  `id_user_2` INT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `user_1_message`
+    FOREIGN KEY (`id`)
+    REFERENCES `makeout`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `user_2_message`
+    FOREIGN KEY (`id`)
+    REFERENCES `makeout`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+    
 ```

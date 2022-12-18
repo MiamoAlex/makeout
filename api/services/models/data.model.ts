@@ -8,6 +8,7 @@ import { RowDataPacket } from "mysql2";
 export enum Table {
   User = "user",
   RelUser = "r_user",
+  Message = "message",
 }
 
 // #endregion DataBase Table
@@ -29,11 +30,21 @@ export interface User extends BasicDataModel {
  * the user relation model
  */
 export interface RelUser extends BasicDataModel {
-  id: number,
   id_user_1: number,
   id_user_2: number,
   choice: boolean,
 }
+
+/**
+ * the message model
+ */
+export interface Message extends BasicDataModel {
+  id_user_1: number,
+  id_user_2: number,
+  date: string,
+  content: string,
+}
+
 
 export enum RelUserStatus {
   Rejected = 0,
