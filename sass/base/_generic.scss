@@ -21,6 +21,10 @@
     pointer-events: none;
 }
 
+#templates {
+    display: none;
+}
+
 .color {
     &__green {
         color: var(--clr-main-green);

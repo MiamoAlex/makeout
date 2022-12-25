@@ -1,0 +1,9 @@
+@keyframes swipe {
+    0% {
+        transform: translateY(10rem);
+    } 5%, 95% {
+        transform: translateY(0);
+    } 100% {
+        transform: translateY(10rem);
+    }
+}

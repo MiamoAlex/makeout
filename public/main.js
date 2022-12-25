@@ -22,7 +22,7 @@ const App = {
             App.view.uiRenderer = new Makeout.UiRenderer();
 
             App.controller.requestManager = new Makeout.RequestManager();
-            App.controller.uiController = new Makeout.UiController(App.view.uiRenderer, App.model.dataManager, App.controller.requestManager);
+            App.controller.uiController = new Makeout.UiManager(App.view.uiRenderer, App.model.dataManager, App.controller.requestManager);
         }
     }
 }

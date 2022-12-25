@@ -190,6 +190,17 @@ h2 {
   font-weight: var(--font-weight-regular);
 }
 
+@keyframes swipe {
+  0% {
+    transform: translateY(10rem);
+  }
+  5%, 95% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(10rem);
+  }
+}
 .theme__main {
   --clr-name-main: ;
   --clr-main-text: #EBE0CC;
@@ -207,6 +218,10 @@ h2 {
 .hide {
   opacity: 0;
   pointer-events: none;
+}
+
+#templates {
+  display: none;
 }
 
 .color__green {
@@ -233,6 +248,24 @@ h2 {
 .carousel__text {
   width: 75%;
   text-align: center;
+}
+
+.notification {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-radius: 4rem;
+  width: fit-content;
+  padding: 0.5rem;
+  color: var(--clr-main-white);
+  background-color: var(--clr-main-secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  animation: swipe forwards 4s;
 }
 
 .main {

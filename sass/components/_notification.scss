@@ -1,0 +1,18 @@
+@use "../abstracts/" as *;
+
+.notification {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 4rem;
+
+    width: fit-content;
+    padding: .5rem;
+    color: var(--clr-main-white);
+    background-color: var(--clr-main-secondary);
+
+    @include flex(center, center, row);
+    animation: swipe forwards 4s;
+}

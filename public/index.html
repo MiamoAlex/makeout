@@ -28,12 +28,26 @@
     </main>
 
     <!-- Templates de l'application -->
-    <div class="templates" hidden>
+    <div id="templates" hidden>
         <template class="template__message">
             <li class="message">
                 <span class="message__author">{{author}}</span>
                 <span class="message__content">{{content}}</span>
             </li>
+        </template>
+
+        <template class="template__lover">
+            <div class="match__lover">
+                <span class="match__lover-name">{{name}}</span>
+                <span class="match__lover-age">{{age}}</span>
+                <img class="match__lover-img" src="./assets/{{name}}.png" alt="Picture of an awesome person">
+            </div>
+        </template>
+
+        <template class="template__notification">
+            <div class="notification">
+                <span class="notification__message">{{errorCode}}</span>
+            </div>
         </template>
     </div>
 

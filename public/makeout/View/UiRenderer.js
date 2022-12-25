@@ -5,12 +5,13 @@ export class UiRenderer {
     // Elements visuels de l'application
     domElements = {};
 
-    templates = ['message'];
-    templatesElements = {};
+    templates = {};
 
     constructor() {
-        for (let i = 0; i < this.templates.length; i++) {
-            this.templatesElements[this.templates[i]] = document.querySelector(`.template__${this.templates[i]}`);
+        const templates = document.querySelector('#templates');
+        for (let i = 0; i < templates.children.length; i++) {
+            const template = templates.children[i];
+            this.templates[template.className.split('template__')[1]] = template;
         }
     }
 
@@ -50,14 +51,15 @@ export class UiRenderer {
      * renderTemplate() formatte une template à partir d'un tableau d'objet et l'envoie dans le dom destination
      * @param {Node} template 
      * @param {Array<Object>} arrayObj 
-     * @param {Node} destination 
+     * @param {String} destination 
      */
     renderTemplate(template, arrayObj, destination) {
-        const toFormat = Array.from(template.innerHTML.matchAll(/{{(.*?)}}/gi));
+        this.isEditing = true;
+        const toFormat = Array.from(this.templates[template].innerHTML.matchAll(/{{(.*?)}}/gi));
         let formattedTemplates = '';
         for (let i = 0; i < arrayObj.length; i++) {
             const obj = arrayObj[i];
-            formattedTemplates += template.innerHTML;
+            formattedTemplates += this.templates[template].innerHTML;
             for (let j = 0; j < toFormat.length; j++) {
                 const tag = toFormat[j][0];
                 const key = toFormat[j][1];
@@ -68,6 +70,11 @@ export class UiRenderer {
                 }
             }
         }
-        // destination.innerHTML = formattedTemplates;
+        // Retour des données
+        if (destination) {
+            this.getElement(destination).insertAdjacentHTML('beforeend', formattedTemplates);
+        } else {
+            return formattedTemplates;
+        }
     }
 }
