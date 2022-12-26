@@ -45,6 +45,7 @@ export const login = async (req: Request, res: Response) => {
     return res.cookie('token', token).json({ token: token });
   } catch (err: any) {
     console.error(`Error while reading the user`, err.message);
+    return res.status(400).json({ error: "Error while reading the user" });
   }
 };
 
@@ -93,5 +94,45 @@ export const signup = async (req: Request, res: Response) => {
   } catch (err: any) {
     console.error(`Error while adding the user`, err.message);
     return res.status(400).json({ error: "Error while trying to add the user to the database" });
+  }
+};
+
+/**
+ * Controller for the user signout
+ * @param req
+ * @param res
+ * @returns
+ */
+export const signout = async (req: Request, res: Response) => {
+  try {
+    return res.clearCookie('token').sendStatus(200);
+  } catch (err: any) {
+    console.error(`Error while clearing the auth cookie the user`, err.message);
+    return res.status(400).json({ error: "Error while clearing the auth cookie the user" });
+  }
+};
+
+/**
+ * Controller to validate a user token
+ * @param req
+ * @param res
+ * @returns
+ */
+export const checkIn = async (req: Request, res: Response) => {
+  try {
+    jwt.verify(
+      req.body.token,
+      appConfig.JWT_SECRET,
+      (err: any) => {
+        if (err) {
+          res.status(401).json({ message: "Invalid token" });
+        } else {
+          res.json({ message: "Token is valid" });
+        }
+      }
+    );
+  } catch (err: any) {
+    console.error(`Error while trying to verify the auth token`, err.message);
+    return res.status(400).json({ error: "Error while trying to verify the auth token" });
   }
 };
