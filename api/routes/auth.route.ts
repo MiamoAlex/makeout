@@ -6,7 +6,7 @@ router.post("/login", login);
 
 router.post("/signup", signup);
 
-router.post("/signup", signout);
+router.post("/signout", signout);
 
 router.post("/checkin", checkIn);
 

@@ -84,6 +84,17 @@ class UserService extends DbService<User> {
 
     return lovers;
   }
+
+  async updateUser(id: number, user: Partial<User>) {
+    await this.query(`
+      UPDATE ${Table.User}
+      SET ${Object.keys(user).map((key) => user[key] ? `${key} = "${user[key]}"` : false).filter(Boolean).join(", ")}
+      WHERE id = ${id}
+    `);
+    
+    return this.getById(id);
+  }
+
 }
 
 export default new UserService();

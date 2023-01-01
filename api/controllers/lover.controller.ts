@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import UserService from "../services/user.service";
 import RelUserService from "../services/relUser.service";
-import { RelUserStatus } from "../services/models/data.model";
+import { RelUserStatus, User } from "../services/models/data.model";
 
 /**
  * Controller to fetch lovers
@@ -22,6 +22,13 @@ export const getLovers = async (req: Request, res: Response) => {
       id: lover.id,
       username: lover.username,
       birthdate: lover.birthdate,
+      type : lover.type,
+      language: lover.language,
+      description : lover.description,
+      image1: lover.image1,
+      image2: lover.image2,
+      image3: lover.image3,
+      image4: lover.image4,
     }))
 
     // return the token
@@ -93,5 +100,42 @@ export const acceptLovers = async (req: Request, res: Response) => {
     return res.status(200).json({ message: "Lover Accepted" });
   } catch (err: any) {
     return res.status(400).json({ error: "Error while trying to accept lovers" });
+  }
+};
+
+/**
+ * Controller to edit lovers
+ * @param req
+ * @param res
+ * @returns
+ */
+export const editLover = async (req: Request, res: Response) => {
+  try {
+
+    const userId = +(req.headers.userId?.toString() || "");
+
+    const user = await UserService.getUserById(userId);
+
+    if(!user) return;
+
+    const newData = {
+      username: req.body.username || user.username,
+      birthdate: req.body.birthdate || user.birthdate,
+      type : req.body.type || user.type,
+      language: req.body.language || user.language,
+      description : req.body.description || user.description,
+      image1 : req.body.image1 || user.image1,
+      image2 : req.body.image2 || user.image2,
+      image3 : req.body.image3 || user.image3,
+      image4 : req.body.image4 || user.image4,
+    }
+
+    const lover = await UserService.updateUser(userId, <User>newData);
+
+    
+    return res.status(200).json({ lover });
+  } catch (err: any) {
+    console.log(err);
+    return res.status(400).json({ error: "Error while trying to update a lover" });
   }
 };

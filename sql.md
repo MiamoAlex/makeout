@@ -64,3 +64,16 @@ CREATE TABLE `makeout`.`message` (
 
     
 ```
+
+# Edit SQL
+
+```sql
+ALTER TABLE `makeout`.`user` 
+ADD COLUMN `type` VARCHAR(30) NULL DEFAULT NULL AFTER `birthdate`,
+ADD COLUMN `language` VARCHAR(30) NULL DEFAULT NULL AFTER `type`,
+ADD COLUMN `description` LONGTEXT NULL DEFAULT NULL AFTER `language`,
+ADD COLUMN `image1` TEXT NULL DEFAULT NULL AFTER `description`,
+ADD COLUMN `image2` TEXT NULL DEFAULT NULL AFTER `image1`,
+ADD COLUMN `image3` TEXT NULL DEFAULT NULL AFTER `image2`,
+ADD COLUMN `image4` TEXT NULL DEFAULT NULL AFTER `image3`;
+```

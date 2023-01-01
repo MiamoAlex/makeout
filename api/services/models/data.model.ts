@@ -24,6 +24,14 @@ export interface User extends BasicDataModel {
   username: string;
   password: string;
   birthdate: string;
+  type: string;
+  language: string;
+  description: string;
+  image1: string;
+  image2: string;
+  image3: string;
+  image4: string;
+
 }
 
 /**
