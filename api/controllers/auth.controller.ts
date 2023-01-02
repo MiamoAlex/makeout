@@ -41,8 +41,12 @@ export const login = async (req: Request, res: Response) => {
       { expiresIn: "3 hours" }
     );
 
+    const returnUser: any = {...user}
+    delete returnUser.password
+    delete returnUser.id
+
     // return the token
-    return res.cookie('token', token).json({ token: token });
+    return res.cookie('token', token).json({ token: token, user: returnUser });
   } catch (err: any) {
     console.error(`Error while reading the user`, err.message);
     return res.status(400).json({ error: "Error while reading the user" });
