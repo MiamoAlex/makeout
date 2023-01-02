@@ -54,7 +54,7 @@ export class UiRenderer {
      * @param {String} destination 
      */
     renderTemplate(template, arrayObj, destination) {
-        this.isEditing = true;
+
         const toFormat = Array.from(this.templates[template].innerHTML.matchAll(/{{(.*?)}}/gi));
         let formattedTemplates = '';
         for (let i = 0; i < arrayObj.length; i++) {

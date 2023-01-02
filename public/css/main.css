@@ -489,6 +489,18 @@ body {
   width: 9rem;
   height: 9rem;
 }
+.profile__languages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.profile__language {
+  cursor: pointer;
+  width: 4rem;
+}
 .profile input[type=button] {
   background-color: var(--clr-main-secondary);
 }/*# sourceMappingURL=main.css.map */

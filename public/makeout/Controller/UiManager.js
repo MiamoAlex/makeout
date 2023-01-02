@@ -42,8 +42,7 @@ export class UiManager {
                 });
             }
         }
-        console.log(document.cookie)
-        
+
         // Initialisation
         if (document.cookie) {
             this.changeLayout(2, 'match');

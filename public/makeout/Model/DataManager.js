@@ -6,6 +6,12 @@ export class DataManager {
 
     }
 
+    languages = [
+        {
+            name: 'JavaScript'
+        }
+    ];
+
     /**
      * formDataToObject() convertit un objet de type FormData, en objet prêt à être envoyé à l'api en json
      * @param {FormData} formData Données d'un formulaire

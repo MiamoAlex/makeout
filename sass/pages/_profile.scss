@@ -10,8 +10,8 @@
     }
     &__selfies {
         width: 100%;
-        @include flex(center,center,row);
-        gap: .5rem;
+        @include flex(center, center, row);
+        gap: 0.5rem;
         flex-wrap: wrap;
     }
     &__selfie {
@@ -27,6 +27,17 @@
             width: 9rem;
             height: 9rem;
         }
+    }
+    &__types {
+    }
+    &__languages {
+        @include flex(center, center, row);
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    &__language {
+        cursor: pointer;
+        width: 4rem;
     }
     & input[type="button"] {
         background-color: var(--clr-main-secondary);
