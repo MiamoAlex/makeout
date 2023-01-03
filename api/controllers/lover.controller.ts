@@ -127,7 +127,7 @@ export const editLover = async (req: Request, res: Response) => {
     try {
       
       await Promise.all([req.body.image1, req.body.image2, req.body.image3, req.body.image4].map(async (image: string, index: number) => {
-        if(image) return await fs.writeFile(`./data/${req.headers.userId}-${index + 1}.png`, image);
+        if(image) return await fs.writeFile(`./data/${req.headers.userId}-${index + 1}.png`, image.replace(/^data:image\/(png|jpg|jpeg);base64,/, ""), 'base64');
       }))
 
     } catch (error) {
