@@ -13,6 +13,7 @@ class SocketService {
 
 
     constructor(server: Server) {
+        this.socketIdMap = {};
         this.io = server;
         console.log("SocketService Initialized");
 
@@ -46,6 +47,13 @@ class SocketService {
         })
     }
 
+    emit(id: number, event: string, params: any) {
+        Object.entries(this.socketIdMap).filter((entry) => {
+            entry[1] === id
+        }).forEach((entry) => {
+            this.io.to(entry[0]).emit(event, ...params);
+        })
+    }
 }
 
 
