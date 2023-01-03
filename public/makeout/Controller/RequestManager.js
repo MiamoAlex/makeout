@@ -98,4 +98,24 @@ export class RequestManager {
         const req = await fetch('/api/getLovers?nb=5');
         return await req.json();
     }
+
+    async rejectLover(id) {
+        const req = await fetch(`/api/rejectlovers/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+        });
+    }
+    
+    async acceptLover(id) {
+        const req = await fetch(`/api/acceptlovers/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+        });
+    }
 }

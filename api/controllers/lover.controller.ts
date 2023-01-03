@@ -16,7 +16,6 @@ export const getLovers = async (req: Request, res: Response) => {
     if(!req?.query?.nb) {
       return res.status(400).json({ error: "Missing nb parameter" });
     }
-    console.log(req.headers.userId);
     const lovers = await UserService.getLovers(req.headers.userId ,parseInt(req.query.nb.toString()));
     
     const result = lovers.map((lover: any) => ({
@@ -96,9 +95,9 @@ export const acceptLovers = async (req: Request, res: Response) => {
     const user = {...await UserService.getUserById(loverId)};
     const userCurrent = {...await UserService.getUserById(userId)};
 
-    const matches = (await RelUserService.getMatchId(userId)).filter((match: any) => (match.id_user_1 === loverId || match.id_user_2 === loverId) && (match.id_user_1 === userId || match.id_user_2 === userId))
-
-    if(matches.length >= 2) {
+    const isMatch = (await RelUserService.getMatchId(userId)).includes(loverId);
+    console.log(await RelUserService.getMatchId(userId), loverId, userId, isMatch)
+    if(isMatch) {
       SocketService.getInstance().emit(loverId, 'match', userCurrent);
       SocketService.getInstance().emit(userId, 'match', user);
     }
@@ -109,9 +108,9 @@ export const acceptLovers = async (req: Request, res: Response) => {
     
     delete user.password;
 
-    SocketService.getInstance().emit(loverId, 'match', user);
     return res.status(200).json({ message: "Lover Accepted" });
   } catch (err: any) {
+    console.log(err)
     return res.status(400).json({ error: "Error while trying to accept lovers" });
   }
 };

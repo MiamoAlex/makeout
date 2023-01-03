@@ -11,7 +11,7 @@ import moment from "moment";
 class SocketService {
 
     private io: Server;
-    private socketIdMap: Record<string, number | null> = {};
+    static socketIdMap: Record<string, number | null> = {};
 
     static instance: SocketService;
 
@@ -32,23 +32,22 @@ class SocketService {
     }
 
     onConnection(socket: any) {
-        if (!this.socketIdMap) this.socketIdMap = {};
+        if (!SocketService.socketIdMap) SocketService.socketIdMap = {};
 
-        this.socketIdMap[socket.id] = null;
-
+        SocketService.socketIdMap[socket.id] = null;
         socket.on('disconnect', () => {
-            delete this.socketIdMap[socket.id];
+            delete SocketService.socketIdMap[socket.id];
         });
 
         socket.on('token', (token: any) => {
             jwt.verify(token, appConfig.JWT_SECRET, (err: any, decoded: any) => {
-                if (!err) this.socketIdMap[socket.id] = decoded.id;
+                if (!err) SocketService.socketIdMap[socket.id] = decoded.id;
             });
         });
 
         socket.on('sendMessage', async ([userId, message]: any) => { 
             try {
-                const id = this.socketIdMap[socket.id];
+                const id = SocketService.socketIdMap[socket.id];
             
                 if (!id || !userId) throw new Error("Missing destination lovers id");
             
@@ -79,7 +78,7 @@ class SocketService {
         })
         socket.on('getMessages', async (userId: any) => {
             try {
-                const id = this.socketIdMap[socket.id];
+                const id = SocketService.socketIdMap[socket.id];
 
                 if (!id || !userId) throw new Error("Missing destination lovers id");
 
@@ -101,7 +100,7 @@ class SocketService {
         })
 
         socket.on('bug', (id: any) => {
-            Object.entries(this.socketIdMap).filter((entry) => {
+            Object.entries(SocketService.socketIdMap).filter((entry) => {
                 entry[1] === id
             }).forEach((entry) => {
                 this.io.to(entry[0]).emit('bug', id);
@@ -110,10 +109,10 @@ class SocketService {
     }
 
     emit(id: number, event: string, params: any) {
-        Object.entries(this.socketIdMap).filter((entry) => {
-            entry[1] === id
+        Object.entries(SocketService.socketIdMap).filter((entry) => {
+            return entry[1] === id
         }).forEach((entry) => {
-            this.io.to(entry[0]).emit(event, ...params);
+            this.io.to(entry[0]).emit(event, params);
         })
     }
 }

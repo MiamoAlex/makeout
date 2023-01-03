@@ -25,7 +25,7 @@ class RelUserService extends DbService<RelUser> {
   }
 
   async addRelUser(userId: number, loverId: number, choice: RelUserStatus) {
-    this.addOne({
+    await this.addOne({
       id_user_1: userId,
       id_user_2: loverId,
       choice: choice,

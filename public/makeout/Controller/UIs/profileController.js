@@ -64,7 +64,7 @@ export class profileController extends UiController {
                 reader.readAsDataURL(obj[`image${i}`]);
                 reader.onloadend = () => {
                     if (reader.result == 'data:') {
-                        obj[`image${i}`] = '';
+                        obj[`image${i}`] = null;
                     } else {
                         obj[`image${i}`] = reader.result;
                     }

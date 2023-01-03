@@ -11,6 +11,8 @@
         isolation: isolate;
         padding: 0 1.5rem 1rem 1.5rem;
         @include flex(flex-end, flex-start, column);
+        background-color: var(--clr-main-primary);
+        transition: transform 300ms;
 
         &-name {
             font-size: 2.5rem;
@@ -22,6 +24,16 @@
             &::before {
                 content: ">";
             }
+        }
+
+        &-language {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            width: 4rem;
+            background-color: var(--clr-main-text);
+            border-radius: 5rem;
+            padding: 0.25rem;
         }
 
         &-age {
@@ -42,6 +54,16 @@
             object-position: top;
             border-radius: 0 0 4rem 4rem;
         }
+
+        &-left {
+            transform: translate(-34rem, 3rem) rotate(-20deg);
+            z-index: 50;
+        }
+
+        &-right {
+            transform: translate(34rem, 3rem) rotate(20deg);
+            z-index: 50;
+        }
     }
 
     &__lovers {
@@ -49,6 +71,7 @@
         width: 100%;
         height: 80%;
         @include flex(center, center, row);
+        overflow: hidden;
     }
 
     &__actions {

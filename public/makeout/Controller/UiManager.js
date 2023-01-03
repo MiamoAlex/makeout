@@ -97,6 +97,7 @@ export class UiManager {
         if (token) {
             const profile = await this.requestManager.checkToken(token);
             if (profile.user) {
+                this.socketManager.sendToken(token);
                 this.dataManager.currentProfile = profile.user;
                 console.log(profile);
                 this.changeLayout(2, 'match');

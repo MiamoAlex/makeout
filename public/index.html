@@ -37,10 +37,11 @@
         </template>
 
         <template class="template__lover">
-            <div class="match__lover">
+            <div class="match__lover" data-id="{{id}}">
                 <span class="match__lover-name">{{username}}</span>
                 <span class="match__lover-age">{{birthdate}}</span>
                 <img class="match__lover-img" src="{{image1}}" alt="Picture of an awesome person">
+                <img class="match__lover-language" src="./assets/languages/{{language}}.png" alt="Picture of an awesome person">
             </div>
         </template>
 
@@ -51,8 +52,7 @@
         </template>
 
         <template class="template__language">
-            <img data-language="{{name}}" src="./assets/languages/{{name}}.png"
-                alt="Image representing the {{name}} programming language" class="profile__language">
+            <img data-language="{{name}}" src="./assets/languages/{{name}}.png" alt="Image representing the {{name}} programming language" class="profile__language">
         </template>
     </div>
 
