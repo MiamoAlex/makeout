@@ -3,8 +3,10 @@ import authRouter from "./auth.route";
 import appRouter from "./app.route";
 import loverRouter from "./lover.route";
 import messageRouter from "./message.route";
+import morgan from "morgan";
 export const apiRouter = express.Router();
 
+apiRouter.use(morgan("tiny"));
 
 apiRouter.use('/', authRouter);
 apiRouter.use('/', loverRouter);

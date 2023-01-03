@@ -1,5 +1,4 @@
 import express, { Express } from "express";
-import morgan from "morgan";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import http from 'http';
@@ -31,7 +30,6 @@ SocketService.setInstance(new Server(server));
 
 // express middlewares
 app.use(cors());
-app.use(morgan("tiny"));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
