@@ -92,11 +92,18 @@ export const acceptLovers = async (req: Request, res: Response) => {
       return res.status(400).json({ error: "You can't accept yourself" });
     }
 
-    const rel = RelUserService.addRelUser(userId, loverId, RelUserStatus.Accepted);
+    await RelUserService.addRelUser(userId, loverId, RelUserStatus.Accepted);
     const user = {...await UserService.getUserById(loverId)};
+    const userCurrent = {...await UserService.getUserById(userId)};
 
+    const matches = (await RelUserService.getMatchId(userId)).filter((match: any) => (match.id_user_1 === loverId || match.id_user_2 === loverId) && (match.id_user_1 === userId || match.id_user_2 === userId))
 
-    if(!rel || !user) {
+    if(matches.length >= 2) {
+      SocketService.getInstance().emit(loverId, 'match', userCurrent);
+      SocketService.getInstance().emit(userId, 'match', user);
+    }
+
+    if(!user) {
       return res.status(400).json({ error: "Error while trying to accept lovers" });
     }
     
