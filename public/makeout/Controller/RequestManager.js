@@ -27,7 +27,7 @@ export class RequestManager {
             },
             body: JSON.stringify(account)
         });
-        return req.status;
+        return req.json();
     }
 
     /**
@@ -44,6 +44,34 @@ export class RequestManager {
             },
             body: JSON.stringify(account)
         });
-        return req.status;
+        return await req.json();
+    }
+
+    /**
+     * checkToken() vérifie le token actuellement stocké
+     * @param {Number} currentToken 
+     * @returns {Number} Code de statut
+     */
+    async checkToken(currentToken) {
+        const req = await fetch('/api/checkIn', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ token: currentToken })
+        });
+        return await req.json();
+    }
+
+    /**
+     * logout() déconnecte l'utilisateur actuel
+     * et rafraichie la page
+     */
+    async logout() {
+        const req = await fetch('/api/signout');
+        setTimeout(() => {
+            document.location.reload();
+        }, 200);
     }
 }

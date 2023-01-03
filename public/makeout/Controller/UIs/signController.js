@@ -33,8 +33,10 @@ export class signController extends UiController {
             this.throwError('⚠ Username is required');
         } else {
             delete obj.confirmpassword;
-            const status = await this.requestManager.signup(obj);
-            if (status == 200) {
+            const response = await this.requestManager.signup(obj);
+            if (response.token) {
+                this.dataManager.currentProfile = response.user;
+                this.uiManager.socketManager.sendToken(response.token);
                 this.uiManager.changeLayout(1, 'profile');
             } else {
                 this.throwError('⚠ An error occured');

@@ -22,8 +22,10 @@ export class loginController extends UiController {
     async loginSubmitHandler(ev) {
         const obj = this.dataManager.formDataToObject(new FormData(this.uiRenderer.getElement('loginForm')));
 
-        const status = await this.requestManager.login(obj);
-        if (status == 200) {
+        const response = await this.requestManager.login(obj);
+        if (response.token) {
+            this.dataManager.currentProfile = response.user;
+            this.uiManager.socketManager.sendToken(response.token);
             this.uiManager.changeLayout(1, 'profile');
         } else {
             this.throwError('⚠ Password or Username is invalid');

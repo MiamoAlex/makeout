@@ -1,18 +1,43 @@
 export class SocketManager {
-    constructor() {
 
+    socket = undefined;
+
+    socketEvents = ['getMessages', 'match', 'bug']
+
+    constructor(uiManager) {
+        this.uiManager = uiManager;
         this.socket = io("ws://localhost:3002");
 
-        // send a message to the server
-        this.socket.emit("hello from client", 5, "6", { 7: Uint8Array.from([8]) });
-
-        // receive a message from the server
-        this.socket.onAny((...args) => {
-            console.log(args);
+        this.socketEvents.forEach(event => {
+            this.socket.on(event, (data) => {
+                this[`${event}Handler`](data);
+            })
         });
     }
 
-    sendAny(text) {
-        this.socket.emit('feur', text);
+
+    /**
+     * sendToken() initialise le token du socket côté back en lui envoyant
+     * @param currentToken Token de l'api
+     */
+    sendToken(currentToken) {
+        this.socket.emit('token', currentToken);
     }
+
+    sendBug(userId) {
+
+    }
+
+    sendMessage(message, id) {
+
+    }
+
+    getMessages(id) {
+        this.socket.emit('getMessages', userId);
+    }
+
+    getMessagesHandler(messages) {
+        console.log(messages);
+    }
+
 }

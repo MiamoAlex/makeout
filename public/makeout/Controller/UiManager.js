@@ -7,12 +7,6 @@ import * as Makeout from '../index.js';
 export class UiManager {
     // Elements à stocker dans l'application ainsi que leurs évenements
     domElements = {
-
-        headDebug: {
-            element: 'header',
-            events: ['click']
-        },
-
         header: {
             element: '.main__head',
             events: ['click']
@@ -50,12 +44,7 @@ export class UiManager {
             }
         }
 
-        // Initialisation
-        if (document.cookie) {
-            this.changeLayout(2, 'match');
-        } else {
-            this.changeLayout(0, 'home');
-        }
+        this.checkLogin();
     }
 
     /**
@@ -93,10 +82,24 @@ export class UiManager {
         }
     }
 
-    headDebugHandler(ev) {
-        if (ev.target.className == 'miamo') {
-            this.socketManager.sendAny(document.querySelector('.miamoValue').value);
+    /**
+     * checkLogin() vérifie que le token actuellement stocké
+     * dans le navigateur est toujours valide
+     */
+    async checkLogin() {
+        const token = document.cookie.split('token=')[1];
+        console.log(token)
+        if (token) {
+            const profile = await this.requestManager.checkToken(token);
+            if (profile.user) {
+                this.dataManager.currentProfile = profile.user;
+                console.log(profile);
+                this.changeLayout(2, 'match');
+            } else {
+                this.changeLayout(0, 'home');
+            }
+        } else {
+            this.changeLayout(0, 'home');
         }
     }
-
 }

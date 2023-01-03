@@ -21,6 +21,7 @@ export class profileController extends UiController {
 
         };
         super(uiManager, domElements);
+        console.log(this.dataManager.currentProfile);
         this.uiRenderer.renderTemplate('language', this.dataManager.languages, 'languages');
         // Selectionner si il existe le type actuel
     }
@@ -38,6 +39,8 @@ export class profileController extends UiController {
         } else if (dataset.i18n == 'saveChanges') {
             // const obj = this.dataManager.formDataToObject(new FormData(this.uiRenderer.getElement('')));
             // console.log(obj);
+        } else if (dataset.i18n == 'logout') {
+            this.requestManager.logout();
         }
     }
 }
