@@ -91,8 +91,16 @@ class UserService extends DbService<User> {
       SET ${Object.keys(user).map((key) => user[key] ? `${key} = "${user[key]}"` : false).filter(Boolean).join(", ")}
       WHERE id = ${id}
     `);
-    
-    return this.getById(id);
+
+    const updatedUser = await this.getById(id);
+
+    // if (updatedUser) {
+    //   Object.keys(updatedUser).forEach((key) => {
+    //     if (!updatedUser[key]) updatedUser[key] = null;
+    //   });
+    // }
+
+    return updatedUser
   }
 
 }

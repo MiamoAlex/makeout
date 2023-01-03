@@ -94,7 +94,7 @@ export const signup = async (req: Request, res: Response) => {
     );
 
     // return the token
-    return res.cookie('token', token).json({ token: token });
+    return res.cookie('token', token).json({ token: token, user: user });
   } catch (err: any) {
     console.error(`Error while adding the user`, err.message);
     return res.status(400).json({ error: "Error while trying to add the user to the database" });
