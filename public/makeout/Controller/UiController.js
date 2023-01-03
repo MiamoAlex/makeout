@@ -6,10 +6,11 @@ export class UiController {
         this.uiRenderer = uiManager.uiRenderer;
         this.dataManager = uiManager.dataManager;
         this.requestManager = uiManager.requestManager;
-        
+
         this.domElements = domElements;
 
         this.uiRenderer.appendDomElements(this.domElements);
+
 
         // Binding des évenements
         for (const key in this.domElements) {

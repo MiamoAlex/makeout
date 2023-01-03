@@ -65,6 +65,14 @@ export class RequestManager {
     }
 
     /**
+     * getChats() retourne les messages récents
+     */
+    async getChats() {
+        const req = await fetch('/api/getchats');
+        return await req.json();
+    }
+
+    /**
      * logout() déconnecte l'utilisateur actuel
      * et rafraichie la page
      */
@@ -108,7 +116,7 @@ export class RequestManager {
             },
         });
     }
-    
+
     async acceptLover(id) {
         const req = await fetch(`/api/acceptlovers/${id}`, {
             method: 'PUT',

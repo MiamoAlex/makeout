@@ -44,6 +44,18 @@ export class UiManager {
             }
         }
 
+        
+        addEventListener('keydown', (ev) => {
+            switch (ev.key) {
+                case '5':
+                    this.socketManager.sendMessage('bonjour !', '12')
+                    break;
+                case '6':
+                    this.socketManager.sendMessage('coucou !', '13')
+                    break;
+            }
+        })
+
         this.checkLogin();
     }
 

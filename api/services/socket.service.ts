@@ -45,7 +45,7 @@ class SocketService {
             });
         });
 
-        socket.on('sendMessage', async ([userId, message]: any) => { 
+        socket.on('sendMessage', async (userId: any, message: any) => { 
             try {
                 const id = SocketService.socketIdMap[socket.id];
             
@@ -59,7 +59,7 @@ class SocketService {
 
                 const mess = await MessageService.getMessages(userId, id);
 
-                const resultMessages = message.map((mes: any) => {
+                const resultMessages = mess.map((mes: any) => {
                     console.log(mes, userId)
                     return {
                         id_user_1: mes.id_user_1,

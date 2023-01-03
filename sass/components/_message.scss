@@ -1,0 +1,22 @@
+@use "../abstracts/" as *;
+
+.message {
+    @include flex(flex-start, center, row);
+    gap: 1rem;
+    width: 100%;
+    background-color: var(--clr-main-secondary);
+    padding: 0.5rem;
+    cursor: pointer;
+    
+    &__img {
+        width: 4rem;
+        height: 4rem;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 3rem;
+    }
+
+    & > * {
+        pointer-events: none;
+    }
+}
