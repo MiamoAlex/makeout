@@ -60,7 +60,10 @@ class SocketService {
                 const mess = await MessageService.getMessages(userId, id);
 
                 const resultMessages = mess.map((mes: any) => {
+                    console.log(mes, userId)
                     return {
+                        id_user_1: mes.id_user_1,
+                        id_user_2: mes.id_user_2,
                         id: mes.id,
                         content: mes.content,
                         date: mes.date,
