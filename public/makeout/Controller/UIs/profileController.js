@@ -65,6 +65,7 @@ export class profileController extends UiController {
                     if (i === 4) {
                         setTimeout(async () => {
                             this.dataManager.currentProfile = await this.requestManager.editProfile(obj);
+                            this.uiManager.changeLayout(2, 'match');
                         }, 300);
                     }
                 }

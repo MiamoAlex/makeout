@@ -34,6 +34,7 @@ export class signController extends UiController {
         } else {
             delete obj.confirmpassword;
             const response = await this.requestManager.signup(obj);
+            console.log(response);
             if (response.token) {
                 this.dataManager.currentProfile = response.user;
                 this.uiManager.socketManager.sendToken(response.token);

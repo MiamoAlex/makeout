@@ -27,7 +27,7 @@ export class RequestManager {
             },
             body: JSON.stringify(account)
         });
-        return req.json();
+        return await req.json();
     }
 
     /**
