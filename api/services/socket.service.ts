@@ -57,17 +57,17 @@ class SocketService {
                   throw new Error("Error while trying to send message");
                 }
 
-
-
-
                 const mess = await MessageService.getMessages(userId, id);
 
                 const resultMessages = message.map((mes: any) => {
+                    console.log(mes, userId)
                     return {
+                        id_user_1: mes.id_user_1,
+                        id_user_2: mes.id_user_2,
                         id: mes.id,
                         content: mes.content,
                         date: mes.date,
-                        sender: mes.id_user_1 === userId,
+                        sender: mes.id_user_1 == userId,
                     };
                 });
             
