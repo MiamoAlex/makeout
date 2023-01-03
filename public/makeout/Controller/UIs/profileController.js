@@ -34,6 +34,7 @@ export class profileController extends UiController {
     profileFormHandler(ev) {
         const dataset = ev.target.dataset;
         if (dataset.language) {
+            // Sauvegarde du langage
             if (this.currentLanguageNode) {
                 this.currentLanguageNode.classList.remove('profile__selected');
             }
@@ -41,6 +42,7 @@ export class profileController extends UiController {
             this.currentLanguageNode = ev.target;
             this.currentLanguageNode.classList.add('profile__selected');
         } else if (dataset.type) {
+            // Sauvegarde du type
             if (this.currentTypeNode) {
                 this.currentTypeNode.classList.remove('profile__selected');
             }
@@ -48,8 +50,8 @@ export class profileController extends UiController {
             this.currentTypeNode = ev.target;
             this.currentTypeNode.classList.add('profile__selected');
         } else if (dataset.i18n == 'saveChanges') {
+            // Sauvegarde du profil
             const obj = this.dataManager.formDataToObject(new FormData(this.uiRenderer.getElement('profileForm')));
-            // Mdp desactivé
             delete obj.password;
             delete obj.confirmpassword;
             // Actualisation language type
@@ -61,11 +63,18 @@ export class profileController extends UiController {
                 const reader = new FileReader();
                 reader.readAsDataURL(obj[`image${i}`]);
                 reader.onloadend = () => {
-                    obj[`image${i}`] = reader.result;
+                    if (reader.result == 'data:') {
+                        obj[`image${i}`] = '';
+                    } else {
+                        obj[`image${i}`] = reader.result;
+                    }
                     if (i === 4) {
                         setTimeout(async () => {
-                            this.dataManager.currentProfile = await this.requestManager.editProfile(obj);
-                            this.uiManager.changeLayout(2, 'match');
+                            const newProfile = await this.requestManager.editProfile(obj);
+                            if (newProfile.lover) {
+                                this.dataManager.currentProfile = newProfile.lover;
+                                this.uiManager.changeLayout(2, 'match');
+                            }
                         }, 300);
                     }
                 }
