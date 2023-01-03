@@ -65,6 +65,8 @@ lover entier en base{}
     ...lastMessage: ""
 }]
 
+# delete
+
 ## Route : api/getusermessages/:id - GET ✅
 
 - Ce que tu me retourne
