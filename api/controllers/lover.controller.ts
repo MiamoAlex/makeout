@@ -127,11 +127,12 @@ export const editLover = async (req: Request, res: Response) => {
     try {
       
       await Promise.all([req.body.image1, req.body.image2, req.body.image3, req.body.image4].map(async (image: string, index: number) => {
-        await fs.writeFile(`/data/${req.body.id}-${index + 1}.png`, image);
+        if(image) return await fs.writeFile(`./data/${req.body.id}-${index + 1}.png`, image);
       }))
 
     } catch (error) {
-      throw new Error('Error while saving the image' + error);
+      console.log(error)
+      throw new Error('Error while saving the image');
     }
 
     const newData = {
