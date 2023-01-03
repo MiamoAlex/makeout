@@ -2,7 +2,7 @@
   "name": "makeout.dev",
   "version": "1.0.0",
   "description": "Makeout.dev is a fictionnal dating app for developpers",
-  "main": "main.js",
+  "main": "api/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node -r ./api/index.ts"

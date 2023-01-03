@@ -10,6 +10,9 @@ import router from "./routes/";
 import appConfig from "./config/app.config";
 import dbConfig from "./config/db.config";
 
+import SocketService from "./services/socket.service";
+
+
 // log the configuration of the server  
 console.group()
 console.log("\n Global Config")
@@ -23,7 +26,8 @@ console.groupEnd()
 // instanciate an express server
 const app: Express = express();
 const server = http.createServer(app);
-const io = new Server(server);
+
+new SocketService(new Server(server));
 
 // express middlewares
 app.use(cors());
@@ -35,14 +39,6 @@ app.use(express.urlencoded({ extended: true }));
 // express routes
 app.use("/api", router.apiRouter);
 app.use("/", router.webRouter);
-
-// socket.io
-io.on('connection', (socket) => {
-  console.log('a user connected');
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
-  });
-});
 
 // define the port
 server.listen(appConfig.PORT, () => {

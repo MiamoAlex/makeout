@@ -127,11 +127,16 @@ export const checkIn = async (req: Request, res: Response) => {
     jwt.verify(
       req.body.token,
       appConfig.JWT_SECRET,
-      (err: any) => {
+      async (err: any, decodedToken: any) => {
         if (err) {
           res.status(401).json({ message: "Invalid token" });
         } else {
-          res.json({ message: "Token is valid" });
+          const user = await userBD.getUserById(decodedToken.id);
+
+          const returnUser: any = {...user}
+          delete returnUser.password
+
+          res.json({ user: returnUser,  message: "Token is valid" });
         }
       }
     );
