@@ -7,6 +7,12 @@ import * as Makeout from '../index.js';
 export class UiManager {
     // Elements à stocker dans l'application ainsi que leurs évenements
     domElements = {
+
+        headDebug: {
+            element: 'header',
+            events: ['click']
+        },
+
         header: {
             element: '.main__head',
             events: ['click']
@@ -24,10 +30,11 @@ export class UiManager {
 
     currentController = Makeout.UiController
 
-    constructor(uiRenderer, dataManager, requestManager) {
+    constructor(uiRenderer, dataManager, requestManager, socketManager) {
         this.uiRenderer = uiRenderer;
         this.dataManager = dataManager;
         this.requestManager = requestManager;
+        this.socketManager = socketManager;
 
         this.uiRenderer.appendDomElements(this.domElements);
 
@@ -85,4 +92,11 @@ export class UiManager {
             this.changeLayout(dataset.layout, dataset.partial);
         }
     }
+
+    headDebugHandler(ev) {
+        if (ev.target.className == 'miamo') {
+            this.socketManager.sendAny(document.querySelector('.miamoValue').value);
+        }
+    }
+
 }

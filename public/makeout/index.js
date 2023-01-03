@@ -4,6 +4,7 @@ export { UiRenderer } from './View/UiRenderer.js';
 
 export { UiManager } from './Controller/UiManager.js';
 export { RequestManager } from './Controller/RequestManager.js';
+export { SocketManager } from './Controller/SocketManager.js';
 
 export { UiController } from './Controller/UiController.js';
 export { homeController } from './Controller/UIs/homeController.js';
