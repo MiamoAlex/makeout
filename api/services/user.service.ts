@@ -76,10 +76,9 @@ class UserService extends DbService<User> {
   getLovers(userId: any, nb: number): Promise<User[]> {
     const lovers = this.query(
       `SELECT * FROM ${Table.User} 
-        WHERE id != ${userId} AND id NOT IN (
+        WHERE id != ${userId} AND image1 IS NOT NULL AND id NOT IN (
           SELECT id_user_2 FROM ${Table.RelUser} 
           WHERE id_user_1 = ${userId}) 
-          AND image1 IS NOT NULL
         ORDER BY RAND() LIMIT ${nb}`
     );
 
