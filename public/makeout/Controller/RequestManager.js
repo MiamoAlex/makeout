@@ -74,4 +74,28 @@ export class RequestManager {
             document.location.reload();
         }, 200);
     }
+
+    /**
+     * editProfile() gère la requête de modification de profil
+     * @param {Object} edittedProfile 
+     */
+    async editProfile(edittedProfile) {
+        const req = await fetch('/api/editProfile', {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(edittedProfile)
+        });
+        return await req.json();
+    }
+
+    /**
+     * getLovers() retourne les profils des personnes non rencontrées
+     */
+    async getLovers() {
+        const req = await fetch('/api/getLovers?nb=5');
+        return await req.json();
+    }
 }

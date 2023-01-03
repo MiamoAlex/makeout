@@ -4,6 +4,9 @@
     @include flex(flex-start, center, column);
     padding-bottom: 2rem;
     gap: 4rem;
+    &__form {
+        width: 80%;
+    }
     &__section {
         @include flex(center, center, column);
         gap: 1rem;
@@ -20,25 +23,63 @@
         height: 9rem;
         border-radius: 1rem;
         background-color: var(--clr-main-secondary);
+    }
 
-        &-icon {
-            position: absolute;
-            inset: 0;
-            width: 9rem;
-            height: 9rem;
+    &__obj {
+        position: absolute;
+        inset: 0;
+        width: 9rem;
+        height: 9rem;
+        &[data="data:"], &[data=""] {
+            background: url('../assets/upload.svg');
+            background-size: cover;
+            background-position: center;
         }
     }
+
     &__types {
+        @include flex(center, center, row);
+        gap: 1rem;
     }
+
+    &__type {
+        width: 6rem;
+        height: 6rem;
+        background-color: var(--clr-main-secondary);
+        border-radius: 10rem;
+        cursor: pointer;
+        transition: outline 300ms;
+        & > * {
+            pointer-events: none;
+        }
+    }
+
+    &__selected {
+        outline: solid var(--clr-main-green);
+    }
+
+    &__icon {
+        width: 6rem;
+        height: 6rem;
+    }
+
     &__languages {
         @include flex(center, center, row);
         flex-wrap: wrap;
+        height: 3rem;
+        width: 100%;
         gap: 1rem;
     }
+
     &__language {
         cursor: pointer;
         width: 4rem;
+        transition: outline 300ms;
+        & > * {
+            pointer-events: none;
+        }
     }
+
     & input[type="button"] {
         background-color: var(--clr-main-secondary);
     }

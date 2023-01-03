@@ -37,7 +37,9 @@ export class signController extends UiController {
             if (response.token) {
                 this.dataManager.currentProfile = response.user;
                 this.uiManager.socketManager.sendToken(response.token);
-                this.uiManager.changeLayout(1, 'profile');
+                setTimeout(() => {
+                    this.uiManager.changeLayout(1, 'profile');
+                }, 300);
             } else {
                 this.throwError('⚠ An error occured');
             }

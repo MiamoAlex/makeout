@@ -1,70 +1,68 @@
-<section class="sign__section">
-    <h2 class="profile__title title"> { Selfies } </h2>
-    <div class="profile__selfies">
-        <div class="profile__selfie">
-            <input type="file" name="selfie1">
-            <svg class="profile__selfie-icon">
-                <use width="144" height="144" xlink:href="#iconUpload"></use>
-            </svg>
+<form class="profile__form">
+    <section class="sign__section">
+        <h2 class="profile__title title"> { Selfies } </h2>
+        <div class="profile__selfies">
+            <div class="profile__selfie">
+                <input type="file" name="image1">
+                <object class="profile__obj" data="{{image1}}" type="">
+                </object>
+            </div>
+            <div class="profile__selfie">
+                <input type="file" name="image2">
+                <object class="profile__obj" data="{{image2}}" type="">
+                </object>
+            </div>
+            <div class="profile__selfie">
+                <input type="file" name="image3">
+                <object class="profile__obj" data="{{image3}}" type="">
+                </object>
+            </div>
+            <div class="profile__selfie">
+                <input type="file" name="image4">
+                <object class="profile__obj" data="{{image4}}" type="">
+                </object>
+            </div>
         </div>
-        <div class="profile__selfie">
-            <input type="file" name="selfie2">
-            <svg class="profile__selfie-icon">
-                <use width="144" height="144" xlink:href="#iconUpload"></use>
-            </svg>
+    </section>
+
+    <section class="sign__section">
+        <h2 class="profile__title title"> { Preferences } </h2>
+        <ul class="profile__types">
+            <li class="profile__type" data-type="frontend">
+                <svg class="profile__icon">
+                    <use xlink:href="#iconFront"></use>
+                </svg>
+            </li>
+
+            <li class="profile__type" data-type="backend">
+                <svg class="profile__icon">
+                    <use xlink:href="#iconBack"></use>
+                </svg>
+            </li>
+
+            <li class="profile__type" data-type="fullstack">
+                <svg class="profile__icon">
+                    <use xlink:href="#iconFullstack"></use>
+                </svg>
+            </li>
+        </ul>
+    </section>
+
+    <section class="sign__section">
+        <h2 class="profile__title title"> { Favorite Language } </h2>
+        <div class="profile__languages">
+
         </div>
-        <div class="profile__selfie">
-            <input type="file" name="selfie3">
-            <svg class="profile__selfie-icon">
-                <use width="144" height="144" xlink:href="#iconUpload"></use>
-            </svg>
-        </div>
-        <div class="profile__selfie">
-            <input type="file" name="selfie4">
-            <svg class="profile__selfie-icon">
-                <use width="144" height="144" xlink:href="#iconUpload"></use>
-            </svg>
-        </div>
-    </div>
-</section>
+    </section>
 
-<section class="sign__section">
-    <h2 class="profile__title title"> { Preferences } </h2>
-    <ul class="profile__types">
-        <li class="profile__type" data-type="frontend">
-            <svg class="profile__icon">
-                <use width="48" xlink:href="#iconFront"></use>
-            </svg>
-        </li>
+    <section class="sign__section">
+        <h2 class="profile__title title"> { Information } </h2>
+        <input type="text" name="username" placeholder="Username" autocomplete="off" value="{{username}}">
+        <input type="password" name="password" placeholder="********" autocomplete="off">
+        <input type="password" name="confirmpassword" placeholder="********" autocomplete="off">
+        <input type="date" name="birthdate" placeholder="Birthdate" autocomplete="off" value="{{birthdate}}">
+    </section>
 
-        <li class="profile__type" data-type="backend">
-            <svg class="profile__icon">
-                <use width="48" xlink:href="#iconBack"></use>
-            </svg>
-        </li>
-
-        <li class="profile__type" data-type="fullstack">
-            <svg class="profile__icon">
-                <use width="48" xlink:href="#iconFullstack"></use>
-            </svg>
-        </li>
-    </ul>
-</section>
-
-<section class="sign__section">
-    <h2 class="profile__title title"> { Favorite Language } </h2>
-    <div class="profile__languages">
-
-    </div>
-</section>
-
-<section class="sign__section">
-    <h2 class="profile__title title"> { Information } </h2>
-    <input type="text" name="username" placeholder="Username" autocomplete="off">
-    <input type="password" name="password" placeholder="Password" autocomplete="off">
-    <input type="password" name="confirmpassword" placeholder="Confirm password" autocomplete="off">
-    <input type="date" name="data" placeholder="Birthdate" autocomplete="off">
-</section>
-
-<input type="button" value="Save changes" data-i18n="saveChanges">
-<input type="button" value="Log-out" data-i18n="logout">
+    <input type="button" value="Save changes" data-i18n="saveChanges">
+    <input type="button" value="Log-out" data-i18n="logout">
+</form>
