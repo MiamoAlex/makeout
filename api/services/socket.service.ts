@@ -13,7 +13,6 @@ class SocketService {
 
 
     constructor(server: Server) {
-        this.socketIdMap = {};
         this.io = server;
         console.log("SocketService Initialized");
 
@@ -23,6 +22,8 @@ class SocketService {
     }
 
     onConnection(socket: any) {
+        if(!this.socketIdMap) this.socketIdMap = {};
+
         this.socketIdMap[socket.id] = null;
 
         socket.on('disconnect', () => {
