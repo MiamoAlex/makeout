@@ -9,7 +9,22 @@ export class DataManager {
     languages = [
         {
             name: 'JavaScript'
-        }
+        },
+        {
+            name: 'Css'
+        },
+        {
+            name: 'Java'
+        },
+        {
+            name: 'Php'
+        },
+        {
+            name: 'Python'
+        },
+        {
+            name: 'Rust'
+        },
     ];
 
     /**

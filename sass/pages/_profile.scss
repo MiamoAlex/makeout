@@ -3,9 +3,10 @@
 .profile {
     @include flex(flex-start, center, column);
     padding-bottom: 2rem;
-    gap: 4rem;
     &__form {
         width: 80%;
+        @include flex(flex-start, center, column);
+        gap: 3rem;
     }
     &__section {
         @include flex(center, center, column);
@@ -30,6 +31,7 @@
         inset: 0;
         width: 9rem;
         height: 9rem;
+        border-radius: 1rem;
         &[data="data:"], &[data=""] {
             background: url('../assets/upload.svg');
             background-size: cover;
@@ -66,14 +68,16 @@
     &__languages {
         @include flex(center, center, row);
         flex-wrap: wrap;
-        height: 3rem;
+        height: 12rem;
         width: 100%;
         gap: 1rem;
     }
 
     &__language {
         cursor: pointer;
-        width: 4rem;
+        width: 6rem;
+        background-color: var(--clr-main-text);
+        border-radius: .5rem;
         transition: outline 300ms;
         & > * {
             pointer-events: none;
