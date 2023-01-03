@@ -127,7 +127,7 @@ export const editLover = async (req: Request, res: Response) => {
     try {
       
       await Promise.all([req.body.image1, req.body.image2, req.body.image3, req.body.image4].map(async (image: string, index: number) => {
-        if(image) return await fs.writeFile(`./data/${req.body.id}-${index + 1}.png`, image);
+        if(image) return await fs.writeFile(`./data/${req.headers.userId}-${index + 1}.png`, image);
       }))
 
     } catch (error) {
@@ -141,10 +141,10 @@ export const editLover = async (req: Request, res: Response) => {
       type : req.body.type || user.type,
       language: req.body.language || user.language,
       description : req.body.description || user.description,
-      image1 : req.body.image1 ? `/data/${req.body.id}-1.png` : user.image1,
-      image2 : req.body.image2 ? `/data/${req.body.id}-2.png` : user.image2,
-      image3 : req.body.image3 ? `/data/${req.body.id}-3.png` : user.image3,
-      image4 : req.body.image4 ? `/data/${req.body.id}-4.png` : user.image4,
+      image1 : req.body.image1 ? `/data/${req.headers.userId}-1.png` : user.image1,
+      image2 : req.body.image2 ? `/data/${req.headers.userId}-2.png` : user.image2,
+      image3 : req.body.image3 ? `/data/${req.headers.userId}-3.png` : user.image3,
+      image4 : req.body.image4 ? `/data/${req.headers.userId}-4.png` : user.image4,
     }
 
     const lover = await UserService.updateUser(userId, <User>newData);
