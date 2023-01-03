@@ -11,14 +11,22 @@ class SocketService {
     private io: Server;
     private socketIdMap: Record<string, number | null> = {};
 
+    static instance: SocketService;
 
-    constructor(server: Server) {
+    static getInstance() {
+        return SocketService.instance;
+    }
+
+    static setInstance(server: Server) {
+        SocketService.instance = new SocketService(server);
+    }
+
+    constructor(server: Server) {        
         this.io = server;
         console.log("SocketService Initialized");
 
         // connection event
         this.io.on('connection', this.onConnection);
-
     }
 
     onConnection(socket: any) {

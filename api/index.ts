@@ -27,7 +27,7 @@ console.groupEnd()
 const app: Express = express();
 const server = http.createServer(app);
 
-new SocketService(new Server(server));
+SocketService.setInstance(new Server(server));
 
 // express middlewares
 app.use(cors());

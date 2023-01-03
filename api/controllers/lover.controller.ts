@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import UserService from "../services/user.service";
 import RelUserService from "../services/relUser.service";
 import { RelUserStatus, User } from "../services/models/data.model";
+import SocketService from "../services/socket.service";
 
 /**
  * Controller to fetch lovers
@@ -92,11 +93,16 @@ export const acceptLovers = async (req: Request, res: Response) => {
     }
 
     const rel = RelUserService.addRelUser(userId, loverId, RelUserStatus.Accepted);
+    const user = {...await UserService.getUserById(loverId)};
 
-    if(!rel) {
+
+    if(!rel || !user) {
       return res.status(400).json({ error: "Error while trying to accept lovers" });
     }
+    
+    delete user.password;
 
+    SocketService.getInstance().emit(loverId, 'match', user);
     return res.status(200).json({ message: "Lover Accepted" });
   } catch (err: any) {
     return res.status(400).json({ error: "Error while trying to accept lovers" });
