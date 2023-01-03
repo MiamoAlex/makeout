@@ -79,6 +79,7 @@ class UserService extends DbService<User> {
         WHERE id != ${userId} AND id NOT IN (
           SELECT id_user_2 FROM ${Table.RelUser} 
           WHERE id_user_1 = ${userId}) 
+          AND image1 IS NOT NULL
         ORDER BY RAND() LIMIT ${nb}`
     );
 

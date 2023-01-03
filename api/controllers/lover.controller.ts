@@ -3,7 +3,7 @@ import UserService from "../services/user.service";
 import RelUserService from "../services/relUser.service";
 import { RelUserStatus, User } from "../services/models/data.model";
 import SocketService from "../services/socket.service";
-
+import fs from 'fs/promises';
 /**
  * Controller to fetch lovers
  * @param req
@@ -124,21 +124,30 @@ export const editLover = async (req: Request, res: Response) => {
 
     if(!user) return;
 
+    try {
+      
+      await Promise.all([req.body.image1, req.body.image2, req.body.image3, req.body.image4].map(async (image: string, index: number) => {
+        await fs.writeFile(`/data/${req.body.id}-${index + 1}.png`, image);
+      }))
+
+    } catch (error) {
+      throw new Error('Error while saving the image' + error);
+    }
+
     const newData = {
       username: req.body.username || user.username,
       birthdate: req.body.birthdate || user.birthdate,
       type : req.body.type || user.type,
       language: req.body.language || user.language,
       description : req.body.description || user.description,
-      image1 : req.body.image1 || user.image1,
-      image2 : req.body.image2 || user.image2,
-      image3 : req.body.image3 || user.image3,
-      image4 : req.body.image4 || user.image4,
+      image1 : req.body.image1 ? `/data/${req.body.id}-1.png` : user.image1,
+      image2 : req.body.image2 ? `/data/${req.body.id}-2.png` : user.image2,
+      image3 : req.body.image3 ? `/data/${req.body.id}-3.png` : user.image3,
+      image4 : req.body.image4 ? `/data/${req.body.id}-4.png` : user.image4,
     }
 
     const lover = await UserService.updateUser(userId, <User>newData);
 
-    
     return res.status(200).json({ lover });
   } catch (err: any) {
     console.log(err);
