@@ -89,6 +89,7 @@ export const getChats = async (req: Request, res: Response) => {
     const result = lovers.map((lover) => ({
       id: lover?.id,
       username: lover?.username,
+      image1: lover?.image1,
       birthdate: lover?.birthdate,
       lastMessage: lastMessage.find(([message]) => message?.id_user_1 === lover?.id || message?.id_user_2 === lover?.id)?.map((message) => ({
         id: message?.id,
