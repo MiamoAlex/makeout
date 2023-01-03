@@ -34,10 +34,13 @@ export class signController extends UiController {
         } else {
             delete obj.confirmpassword;
             const response = await this.requestManager.signup(obj);
+            console.log(response);
             if (response.token) {
                 this.dataManager.currentProfile = response.user;
                 this.uiManager.socketManager.sendToken(response.token);
-                this.uiManager.changeLayout(1, 'profile');
+                setTimeout(() => {
+                    this.uiManager.changeLayout(1, 'profile');
+                }, 300);
             } else {
                 this.throwError('⚠ An error occured');
             }

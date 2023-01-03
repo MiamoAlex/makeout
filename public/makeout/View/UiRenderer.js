@@ -39,8 +39,23 @@ export class UiRenderer {
      * @param {Number} layoutId Id de l'écran à remplir
      * @param {String} partialContent Contenu du partial selectionné
      * @param {String} partialName Nom du partial sélectionné
+     * @param {Object} obj Objet à formatter
      */
-    renderPartial(layoutId, partialContent, partialName) {
+    renderPartial(layoutId, partialContent, partialName, obj) {
+        // Formattage clef valeurs
+        if (obj) {
+            const toFormat = Array.from(partialContent.matchAll(/{{(.*?)}}/gi));
+            for (let i = 0; i < toFormat.length; i++) {
+                const tag = toFormat[i][0];
+                const key = toFormat[i][1];
+                if (obj[key]) {
+                    partialContent = partialContent.replaceAll(tag, obj[key]);
+                } else {
+                    partialContent = partialContent.replaceAll(tag, '');
+                }
+            }
+        }
+
         this.getElement('mainCore').style.transform = `translateX(${-layoutId * 100}%)`;
         const section = this.getElement('mainCore').children[layoutId];
         section.className = `main__section ${partialName}`;
@@ -64,7 +79,13 @@ export class UiRenderer {
                 const tag = toFormat[j][0];
                 const key = toFormat[j][1];
                 if (obj[key]) {
-                    formattedTemplates = formattedTemplates.replaceAll(tag, obj[key]);
+                    if (key == 'birthdate') {
+                        const ageDifMs = Date.now() - new Date(obj[key]).getTime();
+                        const ageDate = new Date(ageDifMs);
+                        formattedTemplates = formattedTemplates.replaceAll(tag, Math.abs(ageDate.getUTCFullYear() - 1970))
+                    } else {
+                        formattedTemplates = formattedTemplates.replaceAll(tag, obj[key]);
+                    }
                 } else {
                     formattedTemplates = formattedTemplates.replaceAll(tag, '');
                 }

@@ -53,9 +53,15 @@ export class UiManager {
      * @param {String} partialName nom du partial à récuperer pour formattage
      */
     async changeLayout(newLayout, partialName) {
+        let data;
         const corePartial = await this.requestManager.getPartial(partialName);
         const headerPartial = await this.requestManager.getPartial(`headers/header${partialName}`);
-        this.uiRenderer.renderPartial(newLayout, corePartial, partialName);
+        switch (partialName) {
+            case 'profile':
+                data = this.dataManager.currentProfile;
+                break;
+        }
+        this.uiRenderer.renderPartial(newLayout, corePartial, partialName, data);
         this.uiRenderer.getElement('header').children[1].innerHTML = headerPartial;
         this.currentController = new Makeout[`${partialName}Controller`](this);
     }
@@ -88,7 +94,6 @@ export class UiManager {
      */
     async checkLogin() {
         const token = document.cookie.split('token=')[1];
-        console.log(token)
         if (token) {
             const profile = await this.requestManager.checkToken(token);
             if (profile.user) {

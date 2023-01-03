@@ -4,8 +4,10 @@
     padding-top: 0;
     &__lover {
         width: 100%;
-        height: 80%;
-        position: relative;
+        height: 95%;
+        position: absolute;
+        top: 0;
+        margin: auto;
         isolation: isolate;
         padding: 0 1.5rem 1rem 1.5rem;
         @include flex(flex-end, flex-start, column);
@@ -14,7 +16,7 @@
             font-size: 2.5rem;
             font-weight: var(--font-w-bold);
             &::before {
-                content: '>';
+                content: ">";
             }
         }
 
@@ -38,6 +40,13 @@
         }
     }
 
+    &__lovers {
+        position: relative;
+        width: 100%;
+        height: 80%;
+        @include flex(center, center, row);
+    }
+
     &__actions {
         @include flex(space-around, center, row);
         gap: 0.5rem;
@@ -54,7 +63,7 @@
         transition: transform 300ms;
 
         &:hover {
-            transform: scale(.95);
+            transform: scale(0.95);
         }
         &-icon {
             pointer-events: none;

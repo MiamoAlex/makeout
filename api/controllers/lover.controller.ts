@@ -16,7 +16,7 @@ export const getLovers = async (req: Request, res: Response) => {
     if(!req?.query?.nb) {
       return res.status(400).json({ error: "Missing nb parameter" });
     }
-
+    console.log(req.headers.userId);
     const lovers = await UserService.getLovers(req.headers.userId ,parseInt(req.query.nb.toString()));
     
     const result = lovers.map((lover: any) => ({
