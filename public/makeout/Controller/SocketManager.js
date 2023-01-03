@@ -29,7 +29,7 @@ export class SocketManager {
     }
 
     sendMessage(message, id) {
-
+        this.socket.emit('sendMessage', id, message);
     }
 
     getMessages(id) {
@@ -40,8 +40,8 @@ export class SocketManager {
         console.log(messages);
     }
 
-    matchHandler() {
-        console.log('MATCH !!!!!!!')
+    matchHandler(match) {
+        console.log(match)
     }
 
 }

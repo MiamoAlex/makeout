@@ -1,0 +1,8 @@
+@use '../abstracts/' as *;
+
+.messages {
+    &__list {
+        padding-inline-start: 0;
+        @include flex(flex-start, center, column);
+    }
+}

@@ -45,7 +45,7 @@ class SocketService {
             });
         });
 
-        socket.on('sendMessage', async ([userId, message]: any) => { 
+        socket.on('sendMessage', async (userId: any, message: any) => { 
             try {
                 const id = SocketService.socketIdMap[socket.id];
             
@@ -57,12 +57,9 @@ class SocketService {
                   throw new Error("Error while trying to send message");
                 }
 
-
-
-
                 const mess = await MessageService.getMessages(userId, id);
 
-                const resultMessages = message.map((mes: any) => {
+                const resultMessages = mess.map((mes: any) => {
                     return {
                         id: mes.id,
                         content: mes.content,

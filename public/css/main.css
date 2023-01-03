@@ -269,6 +269,28 @@ h2 {
   animation: swipe forwards 4s;
 }
 
+.message {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  gap: 1rem;
+  width: 100%;
+  background-color: var(--clr-main-secondary);
+  padding: 0.5rem;
+  cursor: pointer;
+}
+.message__img {
+  width: 4rem;
+  height: 4rem;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 3rem;
+}
+.message > * {
+  pointer-events: none;
+}
+
 .main {
   position: relative;
   max-width: 28rem;
@@ -586,4 +608,12 @@ body {
 }
 .profile input[type=button] {
   background-color: var(--clr-main-secondary);
+}
+
+.messages__list {
+  padding-inline-start: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
 }/*# sourceMappingURL=main.css.map */
