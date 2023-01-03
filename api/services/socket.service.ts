@@ -51,7 +51,7 @@ class SocketService {
             
                 if (!id || !userId) throw new Error("Missing destination lovers id");
             
-                const result = await MessageService.addMessage(userId, id, message, moment().format("YYYY-MM-DD HH:mm:ss"));
+                const result = await MessageService.addMessage(id, userId, message, moment().format("YYYY-MM-DD HH:mm:ss"));
             
                 if(!result) {
                   throw new Error("Error while trying to send message");
@@ -72,6 +72,13 @@ class SocketService {
                 });
             
                 socket.emit('getMessages', resultMessages);
+
+                Object.entries(SocketService.socketIdMap).filter((entry) => {
+                    return entry[1] === userId
+                }).forEach((entry) => {
+                    this.io.to(entry[0]).emit('getMessages', resultMessages);
+                })
+
               } catch (err: any) {
                 console.error(err);
               }
