@@ -29,12 +29,6 @@ class MessageService extends DbService<Message> {
     date: string
   ) {
     return await this.query(`insert into message (id_user_1, id_user_2, content, date) values (${id_user_1}, ${id_user_2}, '${content}', '${date}')`);
-    return await this.addOne({
-      id_user_1,
-      id_user_2,
-      content,
-      date,
-    });
   }
 
   async getMessages(id_user_1: number, id_user_2: number) {

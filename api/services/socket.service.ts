@@ -50,7 +50,7 @@ class SocketService {
                 const id = SocketService.socketIdMap[socket.id];
             
                 if (!id || !userId) throw new Error("Missing destination lovers id");
-            
+                console.log(id, userId);
                 const result = await MessageService.addMessage(id, userId, message, moment().format("YYYY-MM-DD HH:mm:ss"));
             
                 if(!result) {
@@ -64,7 +64,7 @@ class SocketService {
                         id: mes.id,
                         content: mes.content,
                         date: mes.date,
-                        sender: mes.id_user_1 === userId,
+                        sender: mes.id_user_1 == userId,
                     };
                 });
             
