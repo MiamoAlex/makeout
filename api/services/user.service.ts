@@ -94,11 +94,11 @@ class UserService extends DbService<User> {
 
     const updatedUser = await this.getById(id);
 
-    if (updatedUser) {
-      Object.keys(updatedUser).forEach((key) => {
-        if (!updatedUser[key]) updatedUser[key] = null;
-      });
-    }
+    // if (updatedUser) {
+    //   Object.keys(updatedUser).forEach((key) => {
+    //     if (!updatedUser[key]) updatedUser[key] = null;
+    //   });
+    // }
 
     return updatedUser
   }
