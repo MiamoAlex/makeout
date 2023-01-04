@@ -1,6 +1,7 @@
 {
   "name": "makeout.dev",
   "version": "1.0.0",
+  "type": "module",
   "description": "Makeout.dev is a fictionnal dating app for developpers",
   "main": "build/index.js",
   "scripts": {

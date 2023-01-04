@@ -1,5 +1,5 @@
 import mysql from "mysql2/promise";
-import dbConfig from "../config/db.config";
+import dbConfig from "../config/db.config.js";
 /**
  * the pool used for queing requests to the database
  */

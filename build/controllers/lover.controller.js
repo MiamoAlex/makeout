@@ -7,10 +7,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import UserService from "../services/user.service";
-import RelUserService from "../services/relUser.service";
-import { RelUserStatus } from "../services/models/data.model";
-import SocketService from "../services/socket.service";
+import UserService from "../services/user.service.js";
+import RelUserService from "../services/relUser.service.js";
+import { RelUserStatus } from "../services/models/data.model.js";
+import SocketService from "../services/socket.service.js";
 import fs from 'fs/promises';
 /**
  * Controller to fetch lovers

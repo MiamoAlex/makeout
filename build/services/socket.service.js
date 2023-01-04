@@ -8,8 +8,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import jwt from "jsonwebtoken";
-import appConfig from "../config/app.config";
-import MessageService from "./message.service";
+import appConfig from "../config/app.config.js";
+import MessageService from "./message.service.js";
 import moment from "moment";
 /**
  * Message service class used to send messages to the client

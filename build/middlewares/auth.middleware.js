@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import appConfig from "../config/app.config";
+import appConfig from "../config/app.config.js";
 /* Vérification du token */
 export const checkTokenMiddleware = (req, res, next) => {
     var _a;

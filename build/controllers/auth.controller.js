@@ -7,9 +7,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import userBD from "../services/user.service";
+import userBD from "../services/user.service.js";
 import jwt from "jsonwebtoken";
-import appConfig from "../config/app.config";
+import appConfig from "../config/app.config.js";
 /**
  * Controller for the user authentification
  * @param req

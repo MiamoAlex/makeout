@@ -3,10 +3,10 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import http from 'http';
 import { Server } from "socket.io";
-import router from "./routes/";
-import appConfig from "./config/app.config";
-import dbConfig from "./config/db.config";
-import SocketService from "./services/socket.service";
+import router from "./routes/index.js";
+import appConfig from "./config/app.config.js";
+import dbConfig from "./config/db.config.js";
+import SocketService from "./services/socket.service.js";
 // log the configuration of the server  
 console.group();
 console.log("\n Global Config");

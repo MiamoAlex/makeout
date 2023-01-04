@@ -7,9 +7,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import MessageService from "../services/message.service";
-import RelUserService from "../services/relUser.service";
-import UserService from "../services/user.service";
+import MessageService from "../services/message.service.js";
+import RelUserService from "../services/relUser.service.js";
+import UserService from "../services/user.service.js";
 import moment from "moment";
 /**
  * Controller to send message

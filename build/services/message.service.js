@@ -7,9 +7,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import connection from "../utils/db.utils";
-import DbService from "./db.service";
-import { Table } from "./models/data.model";
+import connection from "../utils/db.utils.js";
+import DbService from "./db.service.js";
+import { Table } from "./models/data.model.js";
 /**
  * Message service class use to interact with messages in the database
  *

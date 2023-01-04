@@ -7,10 +7,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import connection from "../utils/db.utils";
+import connection from "../utils/db.utils.js";
 import bcrypt from "bcrypt";
-import DbService from "./db.service";
-import { Table } from "./models/data.model";
+import DbService from "./db.service.js";
+import { Table } from "./models/data.model.js";
 /**
  * User service class use to interact with the user table in the database
  *

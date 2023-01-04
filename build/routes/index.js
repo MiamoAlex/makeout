@@ -1,8 +1,8 @@
 import express from "express";
-import authRouter from "./auth.route";
-import appRouter from "./app.route";
-import loverRouter from "./lover.route";
-import messageRouter from "./message.route";
+import authRouter from "./auth.route.js";
+import appRouter from "./app.route.js";
+import loverRouter from "./lover.route.js";
+import messageRouter from "./message.route.js";
 import morgan from "morgan";
 export const apiRouter = express.Router();
 apiRouter.use(morgan("tiny"));
