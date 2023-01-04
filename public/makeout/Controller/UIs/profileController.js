@@ -53,6 +53,10 @@ export class profileController extends UiController {
         } else if (dataset.i18n == 'saveChanges') {
             // Sauvegarde du profil
             const obj = this.dataManager.formDataToObject(new FormData(this.uiRenderer.getElement('profileForm')));
+            if (new Date(obj.birthdate).getFullYear() > 2005) {
+                this.throwError('⚠️ User is too young');
+                return
+            }
             delete obj.password;
             delete obj.confirmpassword;
             // Actualisation language type

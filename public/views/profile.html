@@ -3,22 +3,22 @@
         <h2 class="profile__title title"> { Selfies } </h2>
         <div class="profile__selfies">
             <div class="profile__selfie">
-                <input type="file" name="image1" accept="image/jpeg,image/png">
+                <input type="file" name="image1" accept="image/jpeg,image/png" required class="profile__selfie-input">
                 <object class="profile__obj" data="{{image1}}" type="">
                 </object>
             </div>
             <div class="profile__selfie">
-                <input type="file" name="image2" accept="image/jpeg,image/png">
+                <input type="file" name="image2" accept="image/jpeg,image/png" required class="profile__selfie-input">
                 <object class="profile__obj" data="{{image2}}" type="">
                 </object>
             </div>
             <div class="profile__selfie">
-                <input type="file" name="image3" accept="image/jpeg,image/png">
+                <input type="file" name="image3" accept="image/jpeg,image/png" required class="profile__selfie-input">
                 <object class="profile__obj" data="{{image3}}" type="">
                 </object>
             </div>
             <div class="profile__selfie">
-                <input type="file" name="image4" accept="image/jpeg,image/png">
+                <input type="file" name="image4" accept="image/jpeg,image/png" required class="profile__selfie-input">
                 <object class="profile__obj" data="{{image4}}" type="">
                 </object>
             </div>
@@ -65,4 +65,8 @@
 
     <input type="button" value="Save changes" data-i18n="saveChanges">
     <input type="button" value="Log-out" data-i18n="logout">
+
+    <p class="profile__credits">
+        Makeout.dev 1.0 - Developed by <a href="https://alexsounalet.com" target="_blank" class="profile__link">Alexandre Sounalet</a> &  <a href="https://github.com/xernois" target="_blank" class="profile__link">Antoine Bauri</a>
+    </p>
 </form>

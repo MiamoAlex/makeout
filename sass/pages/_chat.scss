@@ -18,12 +18,15 @@
         height: 5rem !important;
         background-color: var(--clr-main-secondary);
         border: 0 !important;
+        padding: 0 .5rem 0 .5rem
     }
 
     &__list {
-        @include flex(flex-start, flex-start, column);
+        @include flex(flex-start, flex-start, column-reverse);
         gap: 1rem;
         width: 95%;
+        height: 88%;
+        overflow: auto;
         padding: 1rem 0 3rem 0;
         margin: auto;
     }

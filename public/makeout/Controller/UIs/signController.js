@@ -32,6 +32,8 @@ export class signController extends UiController {
             this.throwError('⚠ Birthdate is required');
         } else if (!obj.username) {
             this.throwError('⚠ Username is required');
+        } else if (new Date(obj.birthdate).getFullYear() > 2005) {
+            this.throwError('⚠ You must be at least 18 to enter');
         } else {
             delete obj.confirmpassword;
             const response = await this.requestManager.signup(obj);

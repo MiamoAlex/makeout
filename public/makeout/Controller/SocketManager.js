@@ -35,14 +35,23 @@ export class SocketManager {
 
     getMessagesHandler(messages) {
         if (this.uiManager.currentLayout == 'chats') {
-            console.log(messages)
             this.uiManager.uiRenderer.getElement('chatList').innerHTML = '';
-            this.uiManager.uiRenderer.renderTemplate('chat', messages, 'chatList');
+            this.uiManager.uiRenderer.renderTemplate('chat', messages.reverse(), 'chatList');
+        } else {
+            this.uiManager.currentController.throwError('New chat received 😉');
         }
     }
 
-    matchHandler(match) {
-        // console.log(match)
+    /**
+     * matchHandler() joue l'animation de match
+     * @param {Object} match 
+     */
+    async matchHandler(match) {
+        const corePartial = await this.uiManager.requestManager.getPartial('matchanim');
+        this.uiManager.uiRenderer.renderPartial(4, corePartial, 'matchanim', match);
+        setTimeout(() => {
+            this.uiManager.changeLayout(2, 'match');
+        }, 3000);
     }
 
 }

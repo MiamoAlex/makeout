@@ -13,7 +13,6 @@ export class messagesController extends UiController {
     }
 
     async refreshMessages() {
-        console.log(await this.requestManager.getChats());
         this.uiRenderer.renderTemplate('message', await this.requestManager.getChats(), 'messagesList');
     }
 

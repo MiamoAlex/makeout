@@ -277,8 +277,18 @@ h2 {
   gap: 1rem;
   width: 100%;
   background-color: var(--clr-main-secondary);
-  padding: 0.5rem;
+  padding: 0.25rem;
   cursor: pointer;
+}
+.message__infos {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.message__author::before {
+  content: "> ";
 }
 .message__img {
   width: 4rem;
@@ -458,6 +468,15 @@ body {
   border-radius: 5rem;
   padding: 0.25rem;
 }
+.match__lover__title, .match__lover__lovername {
+  text-align: center;
+  font-size: 2rem;
+}
+.match__lover__loverpic {
+  margin: auto;
+  width: 40rem;
+  object-fit: cover;
+}
 .match__lover-age {
   font-size: 4.5rem;
   font-weight: var(--font-w-bold);
@@ -557,6 +576,15 @@ body {
   border-radius: 1rem;
   background-color: var(--clr-main-secondary);
 }
+.profile__credits {
+  text-align: center;
+}
+.profile__link {
+  color: var(--clr-main-green);
+}
+.profile__link:visited {
+  color: var(--clr-main-green);
+}
 .profile__obj {
   position: absolute;
   object-fit: cover;
@@ -646,14 +674,17 @@ body {
   height: 5rem !important;
   background-color: var(--clr-main-secondary);
   border: 0 !important;
+  padding: 0 0.5rem 0 0.5rem;
 }
 .chat__list {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 1rem;
   width: 95%;
+  height: 88%;
+  overflow: auto;
   padding: 1rem 0 3rem 0;
   margin: auto;
 }
