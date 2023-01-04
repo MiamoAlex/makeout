@@ -36,6 +36,8 @@ class MessageService extends DbService<Message> {
       SELECT * FROM message
       WHERE (id_user_1 = ${id_user_1} AND id_user_2 = ${id_user_2})
       OR (id_user_1 = ${id_user_2} AND id_user_2 = ${id_user_1})
+      ORDER BY ID DESC
+      LIMIT 100
     `);
   }
 
