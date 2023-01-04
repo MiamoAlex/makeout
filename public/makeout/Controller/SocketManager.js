@@ -15,7 +15,6 @@ export class SocketManager {
         });
     }
 
-
     /**
      * sendToken() initialise le token du socket côté back en lui envoyant
      * @param currentToken Token de l'api
@@ -24,24 +23,26 @@ export class SocketManager {
         this.socket.emit('token', currentToken);
     }
 
-    sendBug(userId) {
-
-    }
+    sendBug(userId) {}
 
     sendMessage(message, id) {
         this.socket.emit('sendMessage', id, message);
     }
 
     getMessages(id) {
-        this.socket.emit('getMessages', userId);
+        this.socket.emit('getMessages', id);
     }
 
     getMessagesHandler(messages) {
-        console.log(messages);
+        if (this.uiManager.currentLayout == 'chats') {
+            console.log(messages)
+            this.uiManager.uiRenderer.getElement('chatList').innerHTML = '';
+            this.uiManager.uiRenderer.renderTemplate('chat', messages, 'chatList');
+        }
     }
 
     matchHandler(match) {
-        console.log(match)
+        // console.log(match)
     }
 
 }

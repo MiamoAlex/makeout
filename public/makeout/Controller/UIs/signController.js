@@ -20,6 +20,7 @@ export class signController extends UiController {
      * @param {Event} ev Evenement au clic sur le formulaire
      */
     async signSubmitHandler(ev) {
+        ev.preventDefault();
         const obj = this.dataManager.formDataToObject(new FormData(this.uiRenderer.getElement('signForm')));
 
         // Si les mots de passe sont bien identiques
@@ -34,7 +35,6 @@ export class signController extends UiController {
         } else {
             delete obj.confirmpassword;
             const response = await this.requestManager.signup(obj);
-            console.log(response);
             if (response.token) {
                 this.dataManager.currentProfile = response.user;
                 this.uiManager.socketManager.sendToken(response.token);

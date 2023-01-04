@@ -127,7 +127,7 @@ input[type="date"] {
   }
 }
 
-input[type="button"] {
+input[type="button"], input[type="submit"] {
   padding: 0.5rem 1.5rem 0.5rem 1.5rem;
   background-color: var(--clr-main-primary);
   color: var(--clr-main-text);

@@ -13,11 +13,14 @@ export class messagesController extends UiController {
     }
 
     async refreshMessages() {
-        this.uiRenderer.renderTemplate('message', await this.requestManager.getChats(), 'messagesList');
         console.log(await this.requestManager.getChats());
+        this.uiRenderer.renderTemplate('message', await this.requestManager.getChats(), 'messagesList');
     }
 
     messagesListHandler(ev) {
-
+        if (ev.target.dataset.id) {
+            this.dataManager.selectedLover = ev.target.dataset.id;
+            this.uiManager.changeLayout(4, 'chats');
+        }
     }
 }

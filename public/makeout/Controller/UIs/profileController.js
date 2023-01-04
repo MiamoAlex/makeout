@@ -16,7 +16,7 @@ export class profileController extends UiController {
             },
         };
         super(uiManager, domElements);
-        console.log(this.dataManager.currentProfile);
+        this.dataManager.canInterract = false;
         this.uiRenderer.renderTemplate('language', this.dataManager.languages, 'languages');
         // Selectionner si il existe le type actuel
         if (this.dataManager.currentProfile.type) {
@@ -25,6 +25,7 @@ export class profileController extends UiController {
         if (this.dataManager.currentProfile.language) {
             document.querySelector(`[data-language="${this.dataManager.currentProfile.language}"]`).click();
         }
+        this.dataManager.canInterract = true;
     }
 
     /**

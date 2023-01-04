@@ -20,6 +20,8 @@ export class loginController extends UiController {
      * @param {Event} ev Evenement au clic sur le formulaire
     */
     async loginSubmitHandler(ev) {
+        ev.preventDefault();
+
         const obj = this.dataManager.formDataToObject(new FormData(this.uiRenderer.getElement('loginForm')));
 
         const response = await this.requestManager.login(obj);
