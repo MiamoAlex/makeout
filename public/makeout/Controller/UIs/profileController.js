@@ -10,7 +10,9 @@ export class profileController extends UiController {
             preferences: {
                 element: '.profile__types',
             },
-
+            typeTitle: {
+                element: '.profile__type-display'
+            },
             languages: {
                 element: '.profile__languages',
             },
@@ -25,7 +27,9 @@ export class profileController extends UiController {
         if (this.dataManager.currentProfile.language) {
             document.querySelector(`[data-language="${this.dataManager.currentProfile.language}"]`).click();
         }
-        this.dataManager.canInterract = true;
+        setTimeout(() => {
+            this.dataManager.canInterract = true;
+        }, 500);
     }
 
     /**
@@ -47,6 +51,7 @@ export class profileController extends UiController {
             if (this.currentTypeNode) {
                 this.currentTypeNode.classList.remove('profile__selected');
             }
+            this.uiRenderer.getElement('typeTitle').textContent = dataset.type;
             this.currentType = dataset.type;
             this.currentTypeNode = ev.target;
             this.currentTypeNode.classList.add('profile__selected');

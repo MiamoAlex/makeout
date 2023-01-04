@@ -13,7 +13,12 @@ export class messagesController extends UiController {
     }
 
     async refreshMessages() {
-        this.uiRenderer.renderTemplate('message', await this.requestManager.getChats(), 'messagesList');
+        const chats = await this.requestManager.getChats();
+        if (chats.length > 0) {
+            this.uiRenderer.renderTemplate('message', await this.requestManager.getChats(), 'messagesList');
+        } else {
+            this.uiRenderer.getElement('messagesList').innerHTML = 'No matches yet 😿'
+        }
     }
 
     messagesListHandler(ev) {

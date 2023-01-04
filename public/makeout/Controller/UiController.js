@@ -30,9 +30,17 @@ export class UiController {
      * @param {String} errorCode Code d'erreur (clef du dictionnaire) 
      */
     throwError(errorCode) {
-        this.uiRenderer.renderTemplate('notification', [{ errorCode }], 'main');
-        setTimeout(() => {
-            document.querySelector('.notification').remove();
-        }, 4500);
+        if (!this.currentError) {
+            this.uiRenderer.renderTemplate('notification', [{ errorCode }], 'main');
+            this.dataManager.canInterract = false;
+            this.currentError = true;
+            setTimeout(() => {
+                document.querySelector('.notification').remove();
+                this.currentError = false;
+                setTimeout(() => {
+                    this.dataManager.canInterract = true;
+                }, 1000);
+            }, 4500);
+        }
     }
 }

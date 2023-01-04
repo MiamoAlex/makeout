@@ -7,10 +7,6 @@ import * as Makeout from '../index.js';
 export class UiManager {
     // Elements à stocker dans l'application ainsi que leurs évenements
     domElements = {
-        body: {
-            element: 'body'
-        },
-
         header: {
             element: '.main__head',
             events: ['click']
@@ -54,14 +50,14 @@ export class UiManager {
             for (var mutation of mutationsList) {
                 if (this.dataManager.canInterract === true && (mutation.type === "attributes" || mutation.type === "childList") && mutation.attributeName !== 'style') {
                     // L'utilisateur à modifié l'interface manuellement
-                    // console.log('Anti-piracy ⚠️');
+                    document.location.reload();
                 }
             }
         };
 
         // Créé une instance de l'observateur lié à la fonction de callback
         this.observer = new MutationObserver(callback);
-        this.observer.observe(this.uiRenderer.getElement('body'), { attributes: true, childList: true, subtree: true, attributeFilter: ['data-id', 'data-action', 'data-language'] });
+        this.observer.observe(this.uiRenderer.getElement('main'), { attributes: true, childList: true, subtree: true, attributeFilter: ['data-id', 'data-action', 'data-language'] });
 
         addEventListener('keydown', (ev) => {
             switch (ev.key) {
@@ -99,7 +95,9 @@ export class UiManager {
         this.uiRenderer.renderPartial(newLayout, corePartial, partialName, data);
         this.uiRenderer.getElement('header').children[1].innerHTML = headerPartial;
         this.currentController = new Makeout[`${partialName}Controller`](this);
-        this.dataManager.canInterract = true;
+        setTimeout(() => {
+            this.dataManager.canInterract = true;
+        }, 1500);
     }
 
     /**

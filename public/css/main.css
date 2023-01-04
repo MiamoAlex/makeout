@@ -145,7 +145,8 @@ input[type=date]:focus {
   outline: 0;
 }
 
-input[type=button], input[type=submit] {
+input[type=button],
+input[type=submit] {
   padding: 0.5rem 1.5rem 0.5rem 1.5rem;
   background-color: var(--clr-main-primary);
   color: var(--clr-main-text);
@@ -156,17 +157,35 @@ input[type=button], input[type=submit] {
   cursor: pointer;
   transition: transform 300ms;
 }
-input[type=button]:hover, input[type=submit]:hover {
+input[type=button]:hover,
+input[type=submit]:hover {
   transform: scale(0.95);
 }
 
 input[type=file] {
   height: 100%;
   width: 100%;
-  opacity: 0;
+  color: transparent;
+  appearance: none;
   z-index: 10;
+  padding-top: 9rem;
   position: relative;
   cursor: pointer;
+}
+input[type=file]:valid {
+  background: url("../assets/check.svg");
+  background-size: cover;
+  background-position: center;
+  z-index: 50;
+}
+input[type=file]:invalid {
+  background: url("../assets/upload.svg");
+  background-size: cover;
+  background-position: center;
+}
+
+#file-upload-button {
+  opacity: 0;
 }
 
 ::-webkit-scrollbar {
@@ -435,7 +454,7 @@ body {
 }
 .match__lover {
   width: 100%;
-  height: 95%;
+  height: 100%;
   position: absolute;
   top: 0;
   margin: auto;
@@ -455,6 +474,7 @@ body {
   white-space: nowrap;
   overflow: hidden;
   width: 80%;
+  text-shadow: #000 1px 0 8px;
 }
 .match__lover-name::before {
   content: ">";
@@ -468,19 +488,11 @@ body {
   border-radius: 5rem;
   padding: 0.25rem;
 }
-.match__lover__title, .match__lover__lovername {
-  text-align: center;
-  font-size: 2rem;
-}
-.match__lover__loverpic {
-  margin: auto;
-  width: 40rem;
-  object-fit: cover;
-}
 .match__lover-age {
   font-size: 4.5rem;
   font-weight: var(--font-w-bold);
   margin-top: -1.5rem;
+  text-shadow: #000 1px 0 8px;
 }
 .match__lover-img {
   position: absolute;
@@ -495,12 +507,25 @@ body {
   border-radius: 0 0 4rem 4rem;
 }
 .match__lover-left {
-  transform: translate(-34rem, 3rem) rotate(-20deg);
+  transform: translate(-36rem, 3rem) rotate(-20deg);
   z-index: 50;
 }
 .match__lover-right {
-  transform: translate(34rem, 3rem) rotate(20deg);
+  transform: translate(36rem, 3rem) rotate(20deg);
   z-index: 50;
+}
+.match__title, .match__lovername {
+  text-align: center;
+  width: 100%;
+  font-size: 2rem;
+}
+.match__loverpic {
+  margin: 1rem auto 1rem auto;
+  width: 85%;
+  height: 60%;
+  border: solid var(--clr-main-purple);
+  border-radius: 1rem;
+  object-fit: cover;
 }
 .match__lovers {
   position: relative;
@@ -573,6 +598,7 @@ body {
   position: relative;
   width: 9rem;
   height: 9rem;
+  overflow: hidden;
   border-radius: 1rem;
   background-color: var(--clr-main-secondary);
 }
@@ -592,11 +618,8 @@ body {
   width: 9rem;
   height: 9rem;
   border-radius: 1rem;
-}
-.profile__obj[data="data:"], .profile__obj[data=""] {
-  background: url("../assets/upload.svg");
-  background-size: cover;
-  background-position: center;
+  pointer-events: none;
+  z-index: 40;
 }
 .profile__types {
   display: flex;
@@ -615,6 +638,9 @@ body {
 }
 .profile__type > * {
   pointer-events: none;
+}
+.profile__type-display {
+  text-transform: capitalize;
 }
 .profile__selected {
   outline: solid var(--clr-main-green);

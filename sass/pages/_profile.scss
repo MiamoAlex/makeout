@@ -22,6 +22,7 @@
         position: relative;
         width: 9rem;
         height: 9rem;
+        overflow: hidden;
         border-radius: 1rem;
         background-color: var(--clr-main-secondary);
     }
@@ -44,12 +45,8 @@
         width: 9rem;
         height: 9rem;
         border-radius: 1rem;
-        &[data="data:"],
-        &[data=""] {
-            background: url("../assets/upload.svg");
-            background-size: cover;
-            background-position: center;
-        }
+        pointer-events: none;
+        z-index: 40;
     }
 
     &__types {
@@ -66,6 +63,10 @@
         transition: outline 300ms;
         & > * {
             pointer-events: none;
+        }
+
+        &-display {
+            text-transform: capitalize;
         }
     }
 

@@ -127,7 +127,8 @@ input[type="date"] {
   }
 }
 
-input[type="button"], input[type="submit"] {
+input[type="button"],
+input[type="submit"] {
   padding: 0.5rem 1.5rem 0.5rem 1.5rem;
   background-color: var(--clr-main-primary);
   color: var(--clr-main-text);
@@ -145,10 +146,29 @@ input[type="button"], input[type="submit"] {
 input[type="file"] {
   height: 100%;
   width: 100%;
-  opacity: 0;
+  color: transparent;
+  appearance: none;
   z-index: 10;
+  padding-top: 9rem;
   position: relative;
   cursor: pointer;
+
+  &:valid {
+    background: url("../assets/check.svg");
+    background-size: cover;
+    background-position: center;
+    z-index: 50;
+  }
+
+  &:invalid {
+    background: url("../assets/upload.svg");
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+#file-upload-button {
+  opacity: 0;
 }
 
 ::-webkit-scrollbar {

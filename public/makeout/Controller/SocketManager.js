@@ -6,6 +6,7 @@ export class SocketManager {
 
     constructor(uiManager) {
         this.uiManager = uiManager;
+        // this.socket = io("wss://makeout.dev");
         this.socket = io("ws://localhost:3002");
 
         this.socketEvents.forEach(event => {
@@ -23,10 +24,13 @@ export class SocketManager {
         this.socket.emit('token', currentToken);
     }
 
-    sendBug(userId) {}
+    sendBug(userId) { }
 
     sendMessage(message, id) {
-        this.socket.emit('sendMessage', id, message);
+        message = message.replaceAll("<[^>]*>", "😡");;
+        if (message.length > 1 && message.length < 320) {
+            this.socket.emit('sendMessage', id, message);
+        }
     }
 
     getMessages(id) {
@@ -35,8 +39,12 @@ export class SocketManager {
 
     getMessagesHandler(messages) {
         if (this.uiManager.currentLayout == 'chats') {
+            this.uiManager.dataManager.canInterract = false;
             this.uiManager.uiRenderer.getElement('chatList').innerHTML = '';
-            this.uiManager.uiRenderer.renderTemplate('chat', messages.reverse(), 'chatList');
+            this.uiManager.uiRenderer.renderTemplate('chat', messages, 'chatList');
+            setTimeout(() => {
+                this.uiManager.dataManager.canInterract = true;
+            }, 500);
         } else {
             this.uiManager.currentController.throwError('New chat received 😉');
         }
@@ -47,6 +55,7 @@ export class SocketManager {
      * @param {Object} match 
      */
     async matchHandler(match) {
+        this.uiManager.dataManager.canInterract = false;
         const corePartial = await this.uiManager.requestManager.getPartial('matchanim');
         this.uiManager.uiRenderer.renderPartial(4, corePartial, 'matchanim', match);
         setTimeout(() => {

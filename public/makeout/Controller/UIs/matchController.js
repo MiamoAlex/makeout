@@ -25,7 +25,7 @@ export class matchController extends UiController {
             this.uiRenderer.renderTemplate('lover', this.lovers, 'loversList');
             setTimeout(() => {
                 this.dataManager.canInterract = true;
-            }, 300);
+            }, 600);
         } else {
             this.currentLover = null;
             this.uiRenderer.getElement('loversList').innerHTML = 'No lovers left 💔';
