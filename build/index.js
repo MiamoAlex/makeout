@@ -20,9 +20,9 @@ const server = http.createServer(app);
 SocketService.setInstance(new Server(server));
 // express middlewares
 app.use(cors());
-app.use(express.json({ limit: "10mb" }));
+app.use(express.json({ limit: "25mb" }));
 app.use(cookieParser());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true, limit: "25mb"  }));
 // express routes
 app.use("/api", router.apiRouter);
 app.use("/", router.webRouter);
