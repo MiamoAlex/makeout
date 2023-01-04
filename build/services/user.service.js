@@ -72,7 +72,7 @@ class UserService extends DbService {
     }
     getLovers(userId, nb) {
         const lovers = this.query(`SELECT * FROM ${Table.User} 
-        WHERE id != ${userId} AND image1 IS NOT NULL AND id NOT IN (
+        WHERE id != ${userId} AND image1 IS NOT NULL AND language IS NOT NULL AND id NOT IN (
           SELECT id_user_2 FROM ${Table.RelUser} 
           WHERE id_user_1 = ${userId}) 
         ORDER BY RAND() LIMIT ${nb}`);
