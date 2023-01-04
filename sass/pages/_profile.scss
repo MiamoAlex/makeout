@@ -26,6 +26,17 @@
         background-color: var(--clr-main-secondary);
     }
 
+    &__credits {
+        text-align: center;
+    }
+
+    &__link {
+        color: var(--clr-main-green);
+        &:visited {
+            color: var(--clr-main-green);
+        }
+    }
+
     &__obj {
         position: absolute;
         object-fit: cover;
@@ -33,8 +44,9 @@
         width: 9rem;
         height: 9rem;
         border-radius: 1rem;
-        &[data="data:"], &[data=""] {
-            background: url('../assets/upload.svg');
+        &[data="data:"],
+        &[data=""] {
+            background: url("../assets/upload.svg");
             background-size: cover;
             background-position: center;
         }
@@ -78,7 +90,7 @@
         cursor: pointer;
         width: 6rem;
         background-color: var(--clr-main-text);
-        border-radius: .5rem;
+        border-radius: 0.5rem;
         transition: outline 300ms;
         & > * {
             pointer-events: none;

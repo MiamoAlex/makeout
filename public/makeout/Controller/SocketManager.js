@@ -15,7 +15,6 @@ export class SocketManager {
         });
     }
 
-
     /**
      * sendToken() initialise le token du socket côté back en lui envoyant
      * @param currentToken Token de l'api
@@ -24,24 +23,35 @@ export class SocketManager {
         this.socket.emit('token', currentToken);
     }
 
-    sendBug(userId) {
-
-    }
+    sendBug(userId) {}
 
     sendMessage(message, id) {
         this.socket.emit('sendMessage', id, message);
     }
 
     getMessages(id) {
-        this.socket.emit('getMessages', userId);
+        this.socket.emit('getMessages', id);
     }
 
     getMessagesHandler(messages) {
-        console.log(messages);
+        if (this.uiManager.currentLayout == 'chats') {
+            this.uiManager.uiRenderer.getElement('chatList').innerHTML = '';
+            this.uiManager.uiRenderer.renderTemplate('chat', messages.reverse(), 'chatList');
+        } else {
+            this.uiManager.currentController.throwError('New chat received 😉');
+        }
     }
 
-    matchHandler(match) {
-        console.log(match)
+    /**
+     * matchHandler() joue l'animation de match
+     * @param {Object} match 
+     */
+    async matchHandler(match) {
+        const corePartial = await this.uiManager.requestManager.getPartial('matchanim');
+        this.uiManager.uiRenderer.renderPartial(4, corePartial, 'matchanim', match);
+        setTimeout(() => {
+            this.uiManager.changeLayout(2, 'match');
+        }, 3000);
     }
 
 }

@@ -10,7 +10,7 @@ import moment from "moment";
  */
 class SocketService {
 
-    private io: Server;
+    static io: Server;
     static socketIdMap: Record<string, number | null> = {};
 
     static instance: SocketService;
@@ -24,11 +24,11 @@ class SocketService {
     }
 
     constructor(server: Server) {
-        this.io = server;
+        SocketService.io = server;
         console.log("SocketService Initialized");
 
         // connection event
-        this.io.on('connection', this.onConnection);
+        SocketService.io.on('connection', this.onConnection);
     }
 
     onConnection(socket: any) {
@@ -50,7 +50,6 @@ class SocketService {
                 const id = SocketService.socketIdMap[socket.id];
             
                 if (!id || !userId) throw new Error("Missing destination lovers id");
-            
                 const result = await MessageService.addMessage(id, userId, message, moment().format("YYYY-MM-DD HH:mm:ss"));
             
                 if(!result) {
@@ -59,24 +58,35 @@ class SocketService {
 
                 const mess = await MessageService.getMessages(userId, id);
 
-                const resultMessages = mess.map((mes: any) => {
-                    console.log(mes, userId)
+                let resultMessages = mess.map((mes: any) => {
                     return {
                         id_user_1: mes.id_user_1,
                         id_user_2: mes.id_user_2,
                         id: mes.id,
                         content: mes.content,
                         date: mes.date,
-                        sender: mes.id_user_1 == userId,
+                        sender: mes.id_user_1 == id,
                     };
                 });
             
                 socket.emit('getMessages', resultMessages);
 
+                resultMessages = mess.map((mes: any) => {
+                    return {
+                        id_user_1: mes.id_user_1,
+                        id_user_2: mes.id_user_2,
+                        id: mes.id,
+                        content: mes.content,
+                        date: mes.date,
+                        sender: mes.id_user_1 != id,
+                    };
+                });
+
                 Object.entries(SocketService.socketIdMap).filter((entry) => {
-                    return entry[1] === userId
+                    return entry[1] == userId
                 }).forEach((entry) => {
-                    this.io.to(entry[0]).emit('getMessages', resultMessages);
+                    console.log(entry)
+                    SocketService.io.to(entry[0]).emit('getMessages', resultMessages);
                 })
 
               } catch (err: any) {
@@ -96,7 +106,7 @@ class SocketService {
                         id: message.id,
                         content: message.content,
                         date: message.date,
-                        sender: message.id_user_1 === userId,
+                        sender: message.id_user_1 == id,
                     };
                 });
 
@@ -110,7 +120,7 @@ class SocketService {
             Object.entries(SocketService.socketIdMap).filter((entry) => {
                 entry[1] === id
             }).forEach((entry) => {
-                this.io.to(entry[0]).emit('bug', id);
+                SocketService.io.to(entry[0]).emit('bug', id);
             })
         })
     }
@@ -119,7 +129,7 @@ class SocketService {
         Object.entries(SocketService.socketIdMap).filter((entry) => {
             return entry[1] === id
         }).forEach((entry) => {
-            this.io.to(entry[0]).emit(event, params);
+            SocketService.io.to(entry[0]).emit(event, params);
         })
     }
 }

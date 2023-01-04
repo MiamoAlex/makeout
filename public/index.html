@@ -31,9 +31,18 @@
     <!-- Templates de l'application -->
     <div id="templates" hidden>
         <template class="template__message">
-            <li class="message">
+            <li class="message" data-id="{{id}}">
                 <img src="{{image1}}" alt="Picture of the {{username}} lover" class="message__img">
-                <span class="message__author">{{username}}</span>
+                <div class="message__infos">
+                    <span class="message__author">{{username}}</span>
+                    <span class="message__previous">{{lastMessage}}</span>
+                </div>
+            </li>
+        </template>
+
+        <template class="template__chat">
+            <li class="chat chat__self-{{sender}}">
+                <span class="chat__content">{{content}}</span>
             </li>
         </template>
 

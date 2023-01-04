@@ -145,7 +145,7 @@ input[type=date]:focus {
   outline: 0;
 }
 
-input[type=button] {
+input[type=button], input[type=submit] {
   padding: 0.5rem 1.5rem 0.5rem 1.5rem;
   background-color: var(--clr-main-primary);
   color: var(--clr-main-text);
@@ -156,7 +156,7 @@ input[type=button] {
   cursor: pointer;
   transition: transform 300ms;
 }
-input[type=button]:hover {
+input[type=button]:hover, input[type=submit]:hover {
   transform: scale(0.95);
 }
 
@@ -277,14 +277,24 @@ h2 {
   gap: 1rem;
   width: 100%;
   background-color: var(--clr-main-secondary);
-  padding: 0.5rem;
+  padding: 0.25rem;
   cursor: pointer;
+}
+.message__infos {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.message__author::before {
+  content: "> ";
 }
 .message__img {
   width: 4rem;
   height: 4rem;
   object-fit: cover;
-  object-position: center;
+  object-position: top;
   border-radius: 3rem;
 }
 .message > * {
@@ -385,21 +395,25 @@ body {
   height: 40%;
 }
 
-.login, .sign {
+.login,
+.sign {
   display: grid;
   place-content: center;
 }
-.login__form, .sign__form {
+.login__form,
+.sign__form {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 1rem;
 }
-.login input[type=button], .sign input[type=button] {
+.login input[type=button],
+.sign input[type=button] {
   background-color: var(--clr-main-secondary);
 }
-.login__section, .sign__section {
+.login__section,
+.sign__section {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -407,8 +421,13 @@ body {
   gap: 1rem;
   margin-bottom: 2rem;
 }
-.login__section input, .sign__section input {
+.login__section input,
+.sign__section input {
   width: 100%;
+}
+.login__submit,
+.sign__submit {
+  background-color: var(--clr-main-secondary) !important;
 }
 
 .match {
@@ -448,6 +467,15 @@ body {
   background-color: var(--clr-main-text);
   border-radius: 5rem;
   padding: 0.25rem;
+}
+.match__lover__title, .match__lover__lovername {
+  text-align: center;
+  font-size: 2rem;
+}
+.match__lover__loverpic {
+  margin: auto;
+  width: 40rem;
+  object-fit: cover;
 }
 .match__lover-age {
   font-size: 4.5rem;
@@ -548,6 +576,15 @@ body {
   border-radius: 1rem;
   background-color: var(--clr-main-secondary);
 }
+.profile__credits {
+  text-align: center;
+}
+.profile__link {
+  color: var(--clr-main-green);
+}
+.profile__link:visited {
+  color: var(--clr-main-green);
+}
 .profile__obj {
   position: absolute;
   object-fit: cover;
@@ -616,4 +653,46 @@ body {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  gap: 1rem;
+}
+
+.chat {
+  border-radius: 1rem;
+  max-width: 25rem;
+  background: var(--clr-main-secondary);
+  padding: 0.5rem;
+  word-break: break-all;
+}
+.chat__content {
+  font-size: 1.4rem;
+  overflow: auto;
+}
+.chat__input {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  height: 5rem !important;
+  background-color: var(--clr-main-secondary);
+  border: 0 !important;
+  padding: 0 0.5rem 0 0.5rem;
+}
+.chat__list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column-reverse;
+  gap: 1rem;
+  width: 95%;
+  height: 88%;
+  overflow: auto;
+  padding: 1rem 0 3rem 0;
+  margin: auto;
+}
+.chat__self- {
+  color: var(--clr-main-purple);
+}
+.chat__self-true {
+  align-self: flex-end;
+  text-align: right;
+  color: var(--clr-main-green);
 }/*# sourceMappingURL=main.css.map */

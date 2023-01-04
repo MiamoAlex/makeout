@@ -36,6 +36,18 @@
             padding: 0.25rem;
         }
 
+
+        &__title, &__lovername {
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        &__loverpic {
+            margin: auto;
+            width: 40rem;
+            object-fit: cover;
+        }
+
         &-age {
             font-size: 4.5rem;
             font-weight: var(--font-w-bold);

@@ -91,12 +91,7 @@ export const getChats = async (req: Request, res: Response) => {
       username: lover?.username,
       image1: lover?.image1,
       birthdate: lover?.birthdate,
-      lastMessage: lastMessage.find(([message]) => message?.id_user_1 === lover?.id || message?.id_user_2 === lover?.id)?.map((message) => ({
-        id: message?.id,
-        content: message?.content,
-        date: message?.date,
-        sender: message?.id_user_1 === userId,
-      })),
+      lastMessage: lastMessage.find(([message]) => message?.id_user_1 === lover?.id || message?.id_user_2 === lover?.id)?.map((message) => message?.content)?.[0],
     }))
 
     // return the token

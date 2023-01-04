@@ -16,7 +16,7 @@ export class profileController extends UiController {
             },
         };
         super(uiManager, domElements);
-        console.log(this.dataManager.currentProfile);
+        this.dataManager.canInterract = false;
         this.uiRenderer.renderTemplate('language', this.dataManager.languages, 'languages');
         // Selectionner si il existe le type actuel
         if (this.dataManager.currentProfile.type) {
@@ -25,6 +25,7 @@ export class profileController extends UiController {
         if (this.dataManager.currentProfile.language) {
             document.querySelector(`[data-language="${this.dataManager.currentProfile.language}"]`).click();
         }
+        this.dataManager.canInterract = true;
     }
 
     /**
@@ -52,6 +53,10 @@ export class profileController extends UiController {
         } else if (dataset.i18n == 'saveChanges') {
             // Sauvegarde du profil
             const obj = this.dataManager.formDataToObject(new FormData(this.uiRenderer.getElement('profileForm')));
+            if (new Date(obj.birthdate).getFullYear() > 2005) {
+                this.throwError('⚠️ User is too young');
+                return
+            }
             delete obj.password;
             delete obj.confirmpassword;
             // Actualisation language type

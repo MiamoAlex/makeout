@@ -29,12 +29,6 @@ class MessageService extends DbService<Message> {
     date: string
   ) {
     return await this.query(`insert into message (id_user_1, id_user_2, content, date) values (${id_user_1}, ${id_user_2}, '${content}', '${date}')`);
-    return await this.addOne({
-      id_user_1,
-      id_user_2,
-      content,
-      date,
-    });
   }
 
   async getMessages(id_user_1: number, id_user_2: number) {
@@ -42,6 +36,8 @@ class MessageService extends DbService<Message> {
       SELECT * FROM message
       WHERE (id_user_1 = ${id_user_1} AND id_user_2 = ${id_user_2})
       OR (id_user_1 = ${id_user_2} AND id_user_2 = ${id_user_1})
+      ORDER BY ID DESC
+      LIMIT 100
     `);
   }
 

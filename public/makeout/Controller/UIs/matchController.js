@@ -19,9 +19,13 @@ export class matchController extends UiController {
 
     async renderNewLovers() {
         this.lovers = await this.requestManager.getLovers();
+        this.dataManager.canInterract = false;
         if (this.lovers.length > 0) {
             this.currentLover = this.lovers[this.lovers.length - 1];
             this.uiRenderer.renderTemplate('lover', this.lovers, 'loversList');
+            setTimeout(() => {
+                this.dataManager.canInterract = true;
+            }, 300);
         } else {
             this.currentLover = null;
             this.uiRenderer.getElement('loversList').innerHTML = 'No lovers left 💔';

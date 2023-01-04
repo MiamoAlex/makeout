@@ -1,25 +1,28 @@
-@use '../abstracts/' as *;
+@use "../abstracts/" as *;
 
-
-.login, .sign{
+.login,
+.sign {
     display: grid;
     place-content: center;
     &__form {
-        @include flex(center,center,column);
+        @include flex(center, center, column);
         gap: 1rem;
-
     }
     & input[type="button"] {
         background-color: var(--clr-main-secondary);
     }
-    
+
     &__section {
-        @include flex(center,center,column);
+        @include flex(center, center, column);
         gap: 1rem;
         margin-bottom: 2rem;
-        
-    & input {
-        width: 100%
+
+        & input {
+            width: 100%;
+        }
     }
+
+    &__submit {
+        background-color: var(--clr-main-secondary)!important;
     }
 }
