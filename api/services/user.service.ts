@@ -64,7 +64,7 @@ class UserService extends DbService<User> {
     }
 
     const user = users[0];
-    const isPasswordValid = await bcrypt.compare(password, user.password);
+    const isPasswordValid = await bcrypt.compare(password, user.password || "");
 
     if (!isPasswordValid) {
       return undefined;

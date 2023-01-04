@@ -22,7 +22,7 @@ interface BasicDataModel extends RowDataPacket {
  */
 export interface User extends BasicDataModel {
   username: string;
-  password: string;
+  password?: string;
   birthdate: string;
   type: string;
   language: string;

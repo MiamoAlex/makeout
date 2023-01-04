@@ -93,6 +93,8 @@ export const signup = async (req: Request, res: Response) => {
       { expiresIn: "3 hours" }
     );
 
+    delete user.password
+
     // return the token
     return res.cookie('token', token).json({ token: token, user: user });
   } catch (err: any) {
