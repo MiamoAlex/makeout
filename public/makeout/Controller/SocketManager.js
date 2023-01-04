@@ -24,7 +24,9 @@ export class SocketManager {
         this.socket.emit('token', currentToken);
     }
 
-    sendBug(userId) { }
+    sendBug(userId) {
+        this.socket.emit('bug', userId);
+     }
 
     sendMessage(message, id) {
         message = message.replaceAll("<[^>]*>", "😡");;
@@ -61,6 +63,10 @@ export class SocketManager {
         setTimeout(() => {
             this.uiManager.changeLayout(2, 'match');
         }, 3000);
+    }
+
+    bugHandler(sender) {
+        this.uiManager.currentController.throwError(`${sender.username} pinged you ! 🐛`);
     }
 
 }

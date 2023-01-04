@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import jwt from "jsonwebtoken";
 import appConfig from "../config/app.config.js";
 import MessageService from "./message.service.js";
+import UserService from "./user.service.js";
 import moment from "moment";
 /**
  * Message service class used to send messages to the client
@@ -103,11 +104,13 @@ class SocketService {
                 console.error(error);
             }
         }));
-        socket.on('bug', (id) => {
+        socket.on('bug', async (id) => {
+            const user = await UserService.getById(SocketService.socketIdMap[socket.id]);
+            delete user.password;
             Object.entries(SocketService.socketIdMap).filter((entry) => {
-                entry[1] === id;
+                return entry[1] === id;
             }).forEach((entry) => {
-                SocketService.io.to(entry[0]).emit('bug', id);
+                SocketService.io.to(entry[0]).emit('bug', user);
             });
         });
     }

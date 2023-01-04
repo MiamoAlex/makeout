@@ -116,7 +116,7 @@ class SocketService {
             }
         })
 
-        socket.on('bug', (id: any) => {
+        socket.on('bug', async (id: any) => {
             Object.entries(SocketService.socketIdMap).filter((entry) => {
                 entry[1] === id
             }).forEach((entry) => {

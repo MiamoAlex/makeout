@@ -48,6 +48,7 @@ export class profileController extends UiController {
             this.currentLanguageNode.classList.add('profile__selected');
         } else if (dataset.type) {
             // Sauvegarde du type
+            this.dataManager.canInterract = false
             if (this.currentTypeNode) {
                 this.currentTypeNode.classList.remove('profile__selected');
             }
@@ -55,6 +56,9 @@ export class profileController extends UiController {
             this.currentType = dataset.type;
             this.currentTypeNode = ev.target;
             this.currentTypeNode.classList.add('profile__selected');
+            setTimeout(() => {
+                this.dataManager.canInterract = true
+            }, 300);
         } else if (dataset.i18n == 'saveChanges') {
             // Sauvegarde du profil
             const obj = this.dataManager.formDataToObject(new FormData(this.uiRenderer.getElement('profileForm')));

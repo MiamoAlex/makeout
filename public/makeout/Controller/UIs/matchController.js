@@ -58,6 +58,12 @@ export class matchController extends UiController {
         }
     }
 
+    bugAction(ev) {
+        if (this.currentLover) {
+            this.uiManager.socketManager.sendBug(this.currentLover.id);
+        }
+    }
+
     acceptAction(ev) {
         if (this.currentLover) {
             document.querySelector(`[data-id="${this.currentLover.id}"]`).classList.add('match__lover-right');

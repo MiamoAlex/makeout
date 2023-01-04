@@ -50,14 +50,18 @@ export class UiManager {
             for (var mutation of mutationsList) {
                 if (this.dataManager.canInterract === true && (mutation.type === "attributes" || mutation.type === "childList") && mutation.attributeName !== 'style') {
                     // L'utilisateur à modifié l'interface manuellement
-                    document.location.reload();
+                    this.dataManager.canInterract = false;
+                    this.uiRenderer.getElement('main').innerHTML = '<h1 style="text-align: center">😡😡😡</h1>';
+                    setTimeout(() => {
+                        document.location.reload();
+                    }, 1500);
                 }
             }
         };
 
         // Créé une instance de l'observateur lié à la fonction de callback
         this.observer = new MutationObserver(callback);
-        this.observer.observe(this.uiRenderer.getElement('main'), { attributes: true, childList: true, subtree: true, attributeFilter: ['data-id', 'data-action', 'data-language'] });
+        this.observer.observe(this.uiRenderer.getElement('main'), { attributes: true, childList: true, subtree: true, attributeFilter: ['data-id', 'data-action', 'data-language', 'maxlength'] });
 
         addEventListener('keydown', (ev) => {
             switch (ev.key) {
@@ -80,6 +84,7 @@ export class UiManager {
      */
     async changeLayout(newLayout, partialName) {
         this.currentLayout = partialName;
+        clearTimeout(this.timeout);
         this.dataManager.canInterract = false;
         let data;
         const corePartial = await this.requestManager.getPartial(partialName);
@@ -95,7 +100,7 @@ export class UiManager {
         this.uiRenderer.renderPartial(newLayout, corePartial, partialName, data);
         this.uiRenderer.getElement('header').children[1].innerHTML = headerPartial;
         this.currentController = new Makeout[`${partialName}Controller`](this);
-        setTimeout(() => {
+        this.timeout = setTimeout(() => {
             this.dataManager.canInterract = true;
         }, 1500);
     }

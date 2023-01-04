@@ -31,15 +31,16 @@ export class UiController {
      */
     throwError(errorCode) {
         if (!this.currentError) {
+            clearTimeout(this.uiManager.timeout);
             this.uiRenderer.renderTemplate('notification', [{ errorCode }], 'main');
             this.dataManager.canInterract = false;
             this.currentError = true;
             setTimeout(() => {
                 document.querySelector('.notification').remove();
                 this.currentError = false;
-                setTimeout(() => {
+                this.uiManager.timeout = setTimeout(() => {
                     this.dataManager.canInterract = true;
-                }, 1000);
+                }, 300);
             }, 4500);
         }
     }
