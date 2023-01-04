@@ -106,7 +106,7 @@ class SocketService {
                         id: message.id,
                         content: message.content,
                         date: message.date,
-                        sender: message.id_user_1 === userId,
+                        sender: message.id_user_1 == id,
                     };
                 });
 
