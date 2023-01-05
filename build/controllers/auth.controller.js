@@ -41,7 +41,7 @@ export const login = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         delete returnUser.password;
         delete returnUser.id;
         // return the token
-        return res.cookie('token', token).json({ token: token, user: returnUser });
+        return res.cookie('token', token, {expires : new Date(Date.now() + 3 * 60 * 60 * 1000)}).json({ token: token, user: returnUser });
     }
     catch (err) {
         console.error(`Error while reading the user`, err.message);
