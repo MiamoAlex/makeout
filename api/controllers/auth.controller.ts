@@ -46,7 +46,9 @@ export const login = async (req: Request, res: Response) => {
     delete returnUser.id
 
     // return the token
-    return res.cookie('token', token).json({ token: token, user: returnUser });
+    return res.cookie('token', token,  {
+      expires : new Date(Date.now() + 3 * 60 * 60 * 1000),
+    }).json({ token: token, user: returnUser });
   } catch (err: any) {
     console.error(`Error while reading the user`, err.message);
     return res.status(400).json({ error: "Error while reading the user" });
