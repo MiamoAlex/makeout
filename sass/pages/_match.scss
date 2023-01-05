@@ -69,6 +69,36 @@
         }
     }
 
+    &__terminal {
+        position: absolute;
+        width: 100%;
+        height: 8rem;
+        padding: .25rem;
+        transition: transform 300ms;
+        background-color: var(--clr-main-dark);
+
+        &-open {
+            transform: translateY(-8rem);
+        }
+
+        &-input {
+            background-color: transparent!important;
+            border: 0!important;
+            width: 100%;
+            resize: none;
+            height: 8rem!important;
+            padding: 0 0 4rem 0;
+            font-size: .7rem!important;
+        }
+
+        &-text {
+            color: var(--clr-main-green);
+            font-size: .7rem;
+            position: absolute;
+            pointer-events: none;
+        }
+    }
+
     &__title, &__lovername {
         text-align: center;
         width: 100%;

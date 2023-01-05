@@ -22,7 +22,7 @@ export class signController extends UiController {
     async signSubmitHandler(ev) {
         ev.preventDefault();
         const obj = this.dataManager.formDataToObject(new FormData(this.uiRenderer.getElement('signForm')));
-
+        const year = new Date(obj.birthdate).getFullYear();
         // Si les mots de passe sont bien identiques
         if (obj.password.length < 4) {
             this.throwError('⚠ Password is too short');
@@ -32,8 +32,10 @@ export class signController extends UiController {
             this.throwError('⚠ Birthdate is required');
         } else if (!obj.username) {
             this.throwError('⚠ Username is required');
-        } else if (new Date(obj.birthdate).getFullYear() > 2005) {
+        } else if (year > 2005) {
             this.throwError('⚠ You must be at least 18 to enter');
+        } else if(year < 1900) {
+            this.throwError('⚠ You must be alive to enter');
         } else {
             delete obj.confirmpassword;
             const response = await this.requestManager.signup(obj);

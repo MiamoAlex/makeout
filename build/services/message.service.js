@@ -30,6 +30,7 @@ class MessageService extends DbService {
      * @param date
      */
     addMessage(id_user_1, id_user_2, content, date) {
+        content = content.replaceAll(/'/g, "\\'");
         return __awaiter(this, void 0, void 0, function* () {
             return yield this.query(`insert into message (id_user_1, id_user_2, content, date) values (${id_user_1}, ${id_user_2}, '${content}', '${date}')`);
         });

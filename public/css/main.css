@@ -324,7 +324,7 @@ h2 {
   position: relative;
   max-width: 28rem;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 3rem);
   max-height: 60rem;
   background-color: var(--clr-main-primary);
   color: var(--clr-main-text);
@@ -363,7 +363,7 @@ h2 {
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: row;
-  height: calc(100% - 3rem);
+  height: 100%;
   transition: transform 400ms ease;
 }
 .main__section {
@@ -514,6 +514,32 @@ body {
   transform: translate(36rem, 3rem) rotate(20deg);
   z-index: 50;
 }
+.match__terminal {
+  position: absolute;
+  width: 100%;
+  height: 8rem;
+  padding: 0.25rem;
+  transition: transform 300ms;
+  background-color: var(--clr-main-dark);
+}
+.match__terminal-open {
+  transform: translateY(-8rem);
+}
+.match__terminal-input {
+  background-color: transparent !important;
+  border: 0 !important;
+  width: 100%;
+  resize: none;
+  height: 8rem !important;
+  padding: 0 0 4rem 0;
+  font-size: 0.7rem !important;
+}
+.match__terminal-text {
+  color: var(--clr-main-green);
+  font-size: 0.7rem;
+  position: absolute;
+  pointer-events: none;
+}
 .match__title, .match__lovername {
   text-align: center;
   width: 100%;
@@ -655,7 +681,7 @@ body {
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
-  height: 12rem;
+  min-height: 12rem;
   width: 100%;
   gap: 1rem;
 }

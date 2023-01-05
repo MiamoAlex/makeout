@@ -82,7 +82,7 @@
     &__languages {
         @include flex(center, center, row);
         flex-wrap: wrap;
-        height: 12rem;
+        min-height: 12rem;
         width: 100%;
         gap: 1rem;
     }

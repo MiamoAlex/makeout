@@ -1,10 +1,10 @@
-@use '../abstracts/' as *;
+@use "../abstracts/" as *;
 
 .main {
     position: relative;
     max-width: 28rem;
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 3rem);
     max-height: 60rem;
     background-color: var(--clr-main-primary);
     color: var(--clr-main-text);
@@ -16,17 +16,16 @@
         width: 100%;
         background-color: var(--clr-main-secondary);
         z-index: 10;
-        
+
         &-icon {
             height: 2rem;
             width: 2rem;
-            cursor: pointer
+            cursor: pointer;
         }
 
         &-title {
-            line-height: 2rem
+            line-height: 2rem;
         }
-
 
         &-actions {
             @include flex(space-between, center, row);
@@ -37,13 +36,13 @@
         &-action {
             height: 2rem;
             min-width: 2rem;
-            color: var(--clr-main-text)
+            color: var(--clr-main-text);
         }
     }
 
     &__core {
         @include flex(flex-start, flex-start, row);
-        height: calc(100% - 3rem);
+        height: 100%;
         transition: transform 400ms ease;
     }
 

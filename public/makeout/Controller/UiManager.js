@@ -7,6 +7,11 @@ import * as Makeout from '../index.js';
 export class UiManager {
     // Elements à stocker dans l'application ainsi que leurs évenements
     domElements = {
+
+        body: {
+            element: 'body'
+        },
+
         header: {
             element: '.main__head',
             events: ['click']
@@ -29,7 +34,7 @@ export class UiManager {
         this.dataManager = dataManager;
         this.requestManager = requestManager;
         this.socketManager = socketManager;
-        this.socketManager.uiManager = this; 
+        this.socketManager.uiManager = this;
 
         this.uiRenderer.appendDomElements(this.domElements);
 
@@ -61,18 +66,7 @@ export class UiManager {
 
         // Créé une instance de l'observateur lié à la fonction de callback
         this.observer = new MutationObserver(callback);
-        this.observer.observe(this.uiRenderer.getElement('main'), { attributes: true, childList: true, subtree: true, attributeFilter: ['data-id', 'data-action', 'data-language', 'maxlength'] });
-
-        addEventListener('keydown', (ev) => {
-            switch (ev.key) {
-                case '5':
-                    this.socketManager.sendMessage('bonjour !', '12')
-                    break;
-                case '6':
-                    this.socketManager.sendMessage('coucou !', '13')
-                    break;
-            }
-        })
+        this.observer.observe(this.uiRenderer.getElement('body'), { attributes: true, childList: true, subtree: true, attributeFilter: ['data-id', 'data-action', 'data-language', 'maxlength'] });
 
         this.checkLogin();
     }
@@ -84,6 +78,7 @@ export class UiManager {
      */
     async changeLayout(newLayout, partialName) {
         this.currentLayout = partialName;
+        window.scroll(0, 0);
         clearTimeout(this.timeout);
         this.dataManager.canInterract = false;
         let data;

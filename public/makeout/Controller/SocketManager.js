@@ -6,8 +6,8 @@ export class SocketManager {
 
     constructor(uiManager) {
         this.uiManager = uiManager;
-        // this.socket = io("wss://makeout.dev");
-        this.socket = io("ws://localhost:3002");
+        this.socket = io("wss://makeout.dev");
+        // this.socket = io("ws://localhost:3002");
 
         this.socketEvents.forEach(event => {
             this.socket.on(event, (data) => {
